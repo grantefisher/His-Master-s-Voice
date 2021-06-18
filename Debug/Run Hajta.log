@@ -1,0 +1,4 @@
+﻿  masters.cpp
+C:\Users\grant\source\repos\Run Hajta\Run Hajta\masters.cpp(66,32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\grant\source\repos\Run Hajta\Run Hajta\masters.cpp(99,11): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Run Hajta.vcxproj -> C:\Users\grant\source\repos\Run Hajta\Debug\Masters Voice.exe

@@ -24,7 +24,16 @@
     <ClCompile Include="masters_camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="masters_physics.cpp">
+    <ClCompile Include="masters_startup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="masters_grid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="masters_entity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mastsers_update.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,7 +50,19 @@
     <ClInclude Include="masters_entity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="masters_physics.h">
+    <ClInclude Include="masters_grid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="masters_startup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="masters_animation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="masters_update.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="masters_globals.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

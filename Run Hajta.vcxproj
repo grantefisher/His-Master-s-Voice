@@ -146,15 +146,22 @@
   <ItemGroup>
     <ClCompile Include="masters.cpp" />
     <ClCompile Include="masters_camera.cpp" />
-    <ClCompile Include="masters_physics.cpp" />
+    <ClCompile Include="masters_entity.cpp" />
+    <ClCompile Include="masters_grid.cpp" />
     <ClCompile Include="masters_render.cpp" />
+    <ClCompile Include="masters_startup.cpp" />
+    <ClCompile Include="mastsers_update.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="masters_animation.h" />
     <ClInclude Include="masters_camera.h" />
     <ClInclude Include="masters_entity.h" />
-    <ClInclude Include="masters_physics.h" />
+    <ClInclude Include="masters_globals.h" />
+    <ClInclude Include="masters_grid.h" />
     <ClInclude Include="masters_render.h" />
     <ClInclude Include="masters_math.h" />
+    <ClInclude Include="masters_startup.h" />
+    <ClInclude Include="masters_update.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Run Hajta.licenseheader" />

@@ -4,11 +4,5 @@
 
 #pragma once
 
-#define CUBE(a) ((a)*(a)*(a))
-#define SQUARE(a) ((a)*(a))
-
-struct vec_two 
-{	
-	float x; 
-	float y;
-};
+#define grid_height 12
+#define grid_width 16

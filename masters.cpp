@@ -3,6 +3,7 @@
 // ==================================== 
 
 
+#include "masters_startup.h"
 #include "masters_camera.h"
 #include "masters_render.h"
 
@@ -19,6 +20,8 @@
 
 // TODO: write function to update all entity vectors relative to camera
 inline void update_vectors_relative_camera(camera* default_cam_ref, camera* prev_cam_ref);
+
+
 
 int main()
 {
@@ -37,7 +40,6 @@ int main()
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 	SDL_Event Event;
-
 	bool running = true;
 
 	if (SDL_CreateWindowAndRenderer(800, 600, SDL_WINDOW_SHOWN, &window, &renderer))
@@ -46,35 +48,17 @@ int main()
 		return 3;
 	}
 
-	// look at all displays
 	SDL_DisplayMode current;
 	int refresh_rate = 0;
-	float time_between_frames;
-	for (int i = 0; i < SDL_GetNumVideoDisplays(); i++)
-	{
-		int should_be_zero = SDL_GetCurrentDisplayMode(i, &current);
+	get_monitor_data(&refresh_rate, &current);
 
-		if (should_be_zero != 0)
-		{
-			SDL_Log("Could not get display mode for video display #%d: %s", i, SDL_GetError());
-		}
-		else
-		{
-			if (i == 0)
-			{
-				refresh_rate = current.refresh_rate;
-				time_between_frames = 1000 / refresh_rate;
-			}
-			SDL_Log("Display #%d: current display mode is %dx%dpx @ %dhz", i, current.w, current.h, current.refresh_rate);
-		}
-
-	}
-
+	/////////////////////////////////////////////////////////////////
+	// 	   TEST OBJECT SECTION
 	//                         x  y    w    h   rx   ry
 	SDL_Rect rectangle =     { 0, 0, 200, 200, 200, 200 };
 	SDL_Rect rectangle_two = { 0, 0, 200, 200, 300, 400 };
 
-	SDL_Surface* surface = SDL_LoadBMP("resources/frog.bmp");
+	SDL_Surface* surface = IMG_Load("resources/square.png");
 	if (surface == NULL)
 	{
 		SDL_Log("error loading bmp: %s\n", SDL_GetError());
@@ -82,25 +66,51 @@ int main()
 
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
 
+	surface = IMG_Load("resources/fireman.png");
+	SDL_Texture* player_texture = SDL_CreateTextureFromSurface(renderer, surface);
+
+	Player conor;
+	conor.position = { 0, 0 };
+	conor.grid_position = { 0, 0 };
+	conor.texture = player_texture;
+	SDL_Rect conor_rect = { 0, 0, 50, 80, 0, 0 };
+	conor.rect = &conor_rect;
 
 	camera default_camera;
-	default_camera.center = { 200, 200 };
+	default_camera.center = { 750, 550 };
 	default_camera.dimensions = { 800, 600 };
-	
+
 	camera previous_camera = default_camera;
 
-	refresh_rate = 60;
-	double ms_per_frame = (1000 / refresh_rate);
-	float ms_per_frame_sixty = 1000 / 60;
+	const int rows = 12;
+	const int columns = 16;
+	const int total_squares = rows * columns;
+	int size = 50;
+	grid_square* gGrid[total_squares];
+	int square_count = -1;
 
-	int process_units;
-	int p_time;
-	process_units = 1;
-	p_time = 16.6;
+	for (int row = 0; row < rows; row++)
+	{
+		for (int column = 0; column < columns; column++) 
+		{
+			square_count++;
+			gGrid[square_count] = new grid_square();
+			gGrid[square_count]->rect = { column * size, row * size,
+										  size, size,
+									      column * size, row * size
+										};
+			gGrid[square_count]->texture = texture;
+		}
+	}
 
+	/////////////////////////////////////////////////////////////////
 
+	
+
+	int p_time = 16;
 	int last_time;
 	int current_diff;
+
 	while (running)
 	{
 		last_time = SDL_GetTicks();
@@ -117,12 +127,16 @@ int main()
 				switch (Event.key.keysym.sym)
 				{
 				case SDLK_w:
+					conor.move_player(direction_input::up);
 					break;
 				case SDLK_a:
+					conor.move_player(direction_input::left);
 					break;
 				case SDLK_s:
+					conor.move_player(direction_input::down);
 					break;
 				case SDLK_d:
+					conor.move_player(direction_input::right);
 					break;
 				case SDLK_UP:
 					default_camera.center.y -= 5;
@@ -148,13 +162,19 @@ int main()
 
 		}
 
-		if (previous_camera.center.x != default_camera.center.x || default_camera.center.y != previous_camera.center.y)
+		conor.grid_to_position(size);
+
+		//if (previous_camera.center.x != default_camera.center.x || default_camera.center.y != previous_camera.center.y)
+		//{
+		for (int i = 0; i < total_squares; i++)
 		{
-			update_rect_relative_camera(&default_camera, &rectangle);
-			update_rect_relative_camera(&default_camera, &rectangle_two);
-			previous_camera.center.x = default_camera.center.x;
-			previous_camera.center.y = default_camera.center.y;
+				update_rect_relative_camera(&default_camera, &gGrid[i]->rect);
 		}
+		update_rect_relative_camera(&default_camera, conor.rect);
+		previous_camera.center.x = default_camera.center.x;
+		previous_camera.center.y = default_camera.center.y;
+		//}
+
 		current_diff = SDL_GetTicks() - last_time;
 		while (current_diff < 16) {
 			current_diff = SDL_GetTicks() - last_time;
@@ -164,8 +184,12 @@ int main()
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 100);
 		SDL_RenderClear(renderer);
 
-		BASE_RENDER(renderer, texture, &rectangle);
-		BASE_RENDER(renderer, texture, &rectangle_two);
+		//BASE_RENDER(renderer, texture, &rectangle);
+		//BASE_RENDER(renderer, texture, &rectangle_two);
+
+		GRID_RENDER(renderer, gGrid, rows, columns);
+		BASE_RENDER(renderer, conor.texture, conor.rect);
+
 
 		SDL_RenderPresent(renderer);
 	}

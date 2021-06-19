@@ -2,6 +2,8 @@
 //  Grant Fisher 2021
 // ==================================== 
 
+#pragma once
+
 #include "masters_math.h"
 
 #include <SDL.h>

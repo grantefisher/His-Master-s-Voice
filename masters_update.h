@@ -4,11 +4,7 @@
 
 #pragma once
 
-#define CUBE(a) ((a)*(a)*(a))
-#define SQUARE(a) ((a)*(a))
+#include "masters_globals.h"
+#include "masters_entity.h"
 
-struct vec_two 
-{	
-	float x; 
-	float y;
-};
+extern void game_update();

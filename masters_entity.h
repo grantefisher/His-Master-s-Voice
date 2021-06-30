@@ -27,6 +27,7 @@ enum direction_input
 // ENTITY DATA STRUCTURES
 struct Player
 {
+	bool alive = true;
 	vec_two position;
 	vec_two grid_position = { 0, 0 };
 	vec_two	velocity = { 0, 0 };
@@ -39,3 +40,22 @@ struct Player
 	void grid_to_position(int size);
 };
 
+struct Bastard
+{
+	vec_two grid_position = { 0, 0 };
+	SDL_Texture* texture;
+	SDL_Rect* rect;
+
+	void move_bastard(direction_input input);
+	void grid_to_position(int size);
+};
+
+struct Long_Bastard
+{
+	vec_two grid_position = { 0, 0 };
+	SDL_Texture* texture;
+	SDL_Rect* rect;
+
+	void move_long_bastard(direction_input input);
+	void grid_to_position(int size);
+};

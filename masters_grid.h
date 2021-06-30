@@ -1,3 +1,5 @@
+#pragma once
+
 #include <SDL.h>
 
 struct grid_square

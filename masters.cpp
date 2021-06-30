@@ -6,6 +6,7 @@
 #include "masters_startup.h"
 #include "masters_camera.h"
 #include "masters_render.h"
+#include "masters_update.h"
 
 #include <SDL.h>
 #include <SDL_image.h>
@@ -47,6 +48,9 @@ int main()
 		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "couldn't create window and renderer: %s", SDL_GetError());
 		return 3;
 	}
+	
+	SDL_SetWindowTitle(window, "His Master's Voice");
+	
 
 	SDL_DisplayMode current;
 	int refresh_rate = 0;
@@ -58,23 +62,36 @@ int main()
 	SDL_Rect rectangle =     { 0, 0, 200, 200, 200, 200 };
 	SDL_Rect rectangle_two = { 0, 0, 200, 200, 300, 400 };
 
-	SDL_Surface* surface = IMG_Load("resources/square.png");
-	if (surface == NULL)
-	{
-		SDL_Log("error loading bmp: %s\n", SDL_GetError());
-	} 
+	
 
-	SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
-
-	surface = IMG_Load("resources/fireman.png");
+	SDL_Surface* surface = IMG_Load("resources/fireman.png");
+	SDL_SetWindowIcon(window, surface);
 	SDL_Texture* player_texture = SDL_CreateTextureFromSurface(renderer, surface);
 
 	Player conor;
-	conor.position = { 0, 0 };
-	conor.grid_position = { 0, 0 };
 	conor.texture = player_texture;
 	SDL_Rect conor_rect = { 0, 0, 50, 80, 0, 0 };
 	conor.rect = &conor_rect;
+	conor.grid_position = { 14, 9 };
+
+	surface = IMG_Load("resources/bastard.png");
+	SDL_Texture* bastard_texture = SDL_CreateTextureFromSurface(renderer, surface);
+
+	Bastard bastard;
+	bastard.grid_position = { 10, 10 };
+	bastard.texture = bastard_texture;
+	SDL_Rect bastard_rect = { 0, 0, 60, 60, 0, 0 };
+	bastard.rect = &bastard_rect;
+
+	surface = IMG_Load("resources/long_bastard.png");
+	SDL_Texture* long_bastard_texture = SDL_CreateTextureFromSurface(renderer, surface);
+
+	Long_Bastard long_bastard;
+	long_bastard.grid_position = { 5, 0 };
+	long_bastard.texture = long_bastard_texture;
+	SDL_Rect long_bastard_rect = { 0, 0, 60, 40, 0, 0 };
+	long_bastard.rect = &long_bastard_rect;
+
 
 	camera default_camera;
 	default_camera.center = { 750, 550 };
@@ -82,9 +99,20 @@ int main()
 
 	camera previous_camera = default_camera;
 
+	surface = IMG_Load("resources/walkable_square.png");
+	if (surface == NULL)
+	{
+		SDL_Log("error loading bmp: %s\n", SDL_GetError());
+	}
+
+	SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+
+	
 	const int rows = 12;
 	const int columns = 16;
+	vec_two grid_dimensions = { rows, columns };
 	const int total_squares = rows * columns;
+	printf("Total squares: %d", total_squares);
 	int size = 50;
 	grid_square* gGrid[total_squares];
 	int square_count = -1;
@@ -99,13 +127,20 @@ int main()
 										  size, size,
 									      column * size, row * size
 										};
+			gGrid[square_count]->walkable = true;
+			gGrid[square_count]->deadly = false;
 			gGrid[square_count]->texture = texture;
 		}
 	}
 
 	/////////////////////////////////////////////////////////////////
+	surface = IMG_Load("resources/deadly_square.png");
+	texture = SDL_CreateTextureFromSurface(renderer, surface);
+	gGrid[100]->texture = texture;
+	gGrid[100]->deadly = true;
 
-	
+	// player one-time setup
+	conor.grid_to_position(size);
 
 	int p_time = 16;
 	int last_time;
@@ -127,16 +162,24 @@ int main()
 				switch (Event.key.keysym.sym)
 				{
 				case SDLK_w:
-					conor.move_player(direction_input::up);
+					movement_update(&conor, gGrid, grid_dimensions, size, direction_input::up);
+					//conor.move_player(direction_input::up);
+					long_bastard.move_long_bastard(direction_input::up);
 					break;
 				case SDLK_a:
-					conor.move_player(direction_input::left);
+					movement_update(&conor, gGrid, grid_dimensions, size, direction_input::left);
+					//conor.move_player(direction_input::left);
+					long_bastard.move_long_bastard(direction_input::left);
 					break;
 				case SDLK_s:
-					conor.move_player(direction_input::down);
+					movement_update(&conor, gGrid, grid_dimensions, size, direction_input::down);
+					//conor.move_player(direction_input::down);
+					long_bastard.move_long_bastard(direction_input::down);
 					break;
 				case SDLK_d:
-					conor.move_player(direction_input::right);
+					movement_update(&conor, gGrid, grid_dimensions, size, direction_input::right);
+					//conor.move_player(direction_input::right);
+					long_bastard.move_long_bastard(direction_input::right);
 					break;
 				case SDLK_UP:
 					default_camera.center.y -= 5;
@@ -162,7 +205,8 @@ int main()
 
 		}
 
-		conor.grid_to_position(size);
+		bastard.grid_to_position(size);
+		long_bastard.grid_to_position(size);
 
 		//if (previous_camera.center.x != default_camera.center.x || default_camera.center.y != previous_camera.center.y)
 		//{
@@ -171,6 +215,8 @@ int main()
 				update_rect_relative_camera(&default_camera, &gGrid[i]->rect);
 		}
 		update_rect_relative_camera(&default_camera, conor.rect);
+		update_rect_relative_camera(&default_camera, bastard.rect);
+		update_rect_relative_camera(&default_camera, long_bastard.rect);
 		previous_camera.center.x = default_camera.center.x;
 		previous_camera.center.y = default_camera.center.y;
 		//}
@@ -188,6 +234,8 @@ int main()
 		//BASE_RENDER(renderer, texture, &rectangle_two);
 
 		GRID_RENDER(renderer, gGrid, rows, columns);
+		BASE_RENDER(renderer, bastard.texture, bastard.rect);
+		BASE_RENDER(renderer, long_bastard.texture, long_bastard.rect);
 		BASE_RENDER(renderer, conor.texture, conor.rect);
 
 

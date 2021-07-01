@@ -148,6 +148,7 @@
     <ClCompile Include="masters_camera.cpp" />
     <ClCompile Include="masters_entity.cpp" />
     <ClCompile Include="masters_grid.cpp" />
+    <ClCompile Include="masters_particle.cpp" />
     <ClCompile Include="masters_render.cpp" />
     <ClCompile Include="masters_startup.cpp" />
     <ClCompile Include="mastsers_update.cpp" />
@@ -155,9 +156,11 @@
   <ItemGroup>
     <ClInclude Include="masters_animation.h" />
     <ClInclude Include="masters_camera.h" />
+    <ClInclude Include="masters_consts.h" />
     <ClInclude Include="masters_entity.h" />
     <ClInclude Include="masters_globals.h" />
     <ClInclude Include="masters_grid.h" />
+    <ClInclude Include="masters_particle.h" />
     <ClInclude Include="masters_render.h" />
     <ClInclude Include="masters_math.h" />
     <ClInclude Include="masters_startup.h" />

@@ -1,2 +1,10 @@
 ﻿  masters.cpp
+  masters_particle.cpp
+C:\Users\grant\source\repos\Run Hajta\Run Hajta\masters_particle.cpp(38,36): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\Users\grant\source\repos\Run Hajta\Run Hajta\masters_particle.cpp(39,36): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+  mastsers_update.cpp
+C:\Users\grant\source\repos\Run Hajta\Run Hajta\mastsers_update.cpp(26,10): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\grant\source\repos\Run Hajta\Run Hajta\mastsers_update.cpp(27,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+C:\Users\grant\source\repos\Run Hajta\Run Hajta\masters_particle.cpp(14): warning C4172: returning address of local variable or temporary: res
   Run Hajta.vcxproj -> C:\Users\grant\source\repos\Run Hajta\Debug\Masters Voice.exe

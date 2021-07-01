@@ -10,5 +10,5 @@ struct grid_square
 	SDL_Rect rect = { 0, 0, 0, 0, 0 };
 };
 
-//extern inline struct grid_square* create_grid(int rows, int columns);
+//extern  struct grid_square* create_grid(int rows, int columns);
 

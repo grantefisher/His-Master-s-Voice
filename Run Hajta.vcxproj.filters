@@ -36,6 +36,9 @@
     <ClCompile Include="mastsers_update.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="masters_particle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="masters_render.h">
@@ -63,6 +66,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="masters_globals.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="masters_particle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="masters_consts.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

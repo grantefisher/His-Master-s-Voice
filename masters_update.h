@@ -9,10 +9,10 @@
 #include "masters_grid.h"
 
 // called upon movement
-extern inline void movement_update(Player*, grid_square** , vec_two, int size, direction_input);
+extern void movement_update(Player*, grid_square** , vec_two, int size, direction_input);
 
-extern inline void game_update(Player*, grid_square**, Bastard*, Long_Bastard*);
+extern void game_update(Player*, grid_square**, Bastard*, Long_Bastard*);
 
-extern inline void animation_update();
+extern void animation_update();
 
-//extern inline void update_relative_to_camera();
+//extern  void update_relative_to_camera();

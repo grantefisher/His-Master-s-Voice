@@ -6,7 +6,7 @@
 
 #include <stdio.h>
 
-extern inline void BASE_RENDER(SDL_Renderer* renderer, SDL_Texture* texture, SDL_Rect* rectangle)
+extern  void BASE_RENDER(SDL_Renderer* renderer, SDL_Texture* texture, SDL_Rect* rectangle)
 {
 	if (SDL_RenderCopy(renderer, texture, NULL, rectangle))
 	{
@@ -14,7 +14,7 @@ extern inline void BASE_RENDER(SDL_Renderer* renderer, SDL_Texture* texture, SDL
 	}
 }
 
-extern inline void GRID_RENDER(SDL_Renderer* renderer, grid_square** GRID, int rows, int columns)
+extern  void GRID_RENDER(SDL_Renderer* renderer, grid_square** GRID, int rows, int columns)
 {
 	int square_count = rows * columns;
 	for (int i = 0; i < square_count; i++)

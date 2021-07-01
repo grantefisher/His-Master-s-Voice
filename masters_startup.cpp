@@ -1,6 +1,6 @@
 #include "masters_startup.h"
 
-inline void get_monitor_data(int* refresh_rate, SDL_DisplayMode* current)
+ void get_monitor_data(int* refresh_rate, SDL_DisplayMode* current)
 {
 	if (SDL_GetCurrentDisplayMode(0, current) != 0)
 	{

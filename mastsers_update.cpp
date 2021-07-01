@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 
-extern inline void movement_update(Player* player,  grid_square** grid, vec_two dimensions, int size, direction_input input) 
+extern void movement_update(Player* player,  grid_square** grid, vec_two dimensions, int size, direction_input input) 
 {
 	vec_two new_grid_position = player->grid_position;
 
@@ -45,7 +45,7 @@ extern inline void movement_update(Player* player,  grid_square** grid, vec_two 
 	}
 }
 
-extern inline void game_update(Player* player, grid_square** grid, Bastard* bastard, Long_Bastard* long_bastard)
+extern void game_update(Player* player, grid_square** grid, Bastard* bastard, Long_Bastard* long_bastard)
 {
 
 }

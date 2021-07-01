@@ -20,7 +20,7 @@
 #undef main 
 
 // TODO: write function to update all entity vectors relative to camera
-inline void update_vectors_relative_camera(camera* default_cam_ref, camera* prev_cam_ref);
+void update_vectors_relative_camera(camera* default_cam_ref, camera* prev_cam_ref);
 
 
 
@@ -43,7 +43,7 @@ int main()
 	SDL_Event Event;
 	bool running = true;
 
-	if (SDL_CreateWindowAndRenderer(800, 600, SDL_WINDOW_SHOWN, &window, &renderer))
+	if (SDL_CreateWindowAndRenderer(900, 700, SDL_WINDOW_SHOWN, &window, &renderer))
 	{
 		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "couldn't create window and renderer: %s", SDL_GetError());
 		return 3;
@@ -94,7 +94,7 @@ int main()
 
 
 	camera default_camera;
-	default_camera.center = { 750, 550 };
+	default_camera.center = { 800, 600 };
 	default_camera.dimensions = { 800, 600 };
 
 	camera previous_camera = default_camera;
@@ -221,6 +221,7 @@ int main()
 		previous_camera.center.y = default_camera.center.y;
 		//}
 
+		// PAUSE AND WAIT TO RENDER
 		current_diff = SDL_GetTicks() - last_time;
 		while (current_diff < 16) {
 			current_diff = SDL_GetTicks() - last_time;

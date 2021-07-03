@@ -7,6 +7,7 @@
 #include "masters_camera.h"
 #include "masters_render.h"
 #include "masters_update.h"
+#include "masters_particle.h"
 
 #include <SDL.h>
 #include <SDL_image.h>
@@ -62,12 +63,23 @@ int main()
 	SDL_Rect rectangle =     { 0, 0, 200, 200, 200, 200 };
 	SDL_Rect rectangle_two = { 0, 0, 200, 200, 300, 400 };
 
-	
+	SDL_Surface* surface = IMG_Load("resources/smoke.png");
+	SDL_Texture* smoke_texture = SDL_CreateTextureFromSurface(renderer, surface);
 
-	SDL_Surface* surface = IMG_Load("resources/fireman.png");
+	surface = IMG_Load("resources/fireman.png");
+	particle_struct particle_arr[200];
+	particle_system particle_sys = init_particle_system(particle_arr, 200, 
+														smoke_texture, 90,
+														160, 40,
+														260, 20,
+														1, 1, 
+														20, 50,
+														1, 3);
+
+	surface = IMG_Load("resources/fireman.png");
 	SDL_SetWindowIcon(window, surface);
 	SDL_Texture* player_texture = SDL_CreateTextureFromSurface(renderer, surface);
-
+	
 	Player conor;
 	conor.texture = player_texture;
 	SDL_Rect conor_rect = { 0, 0, 50, 80, 0, 0 };
@@ -212,14 +224,24 @@ int main()
 		//{
 		for (int i = 0; i < total_squares; i++)
 		{
-				update_rect_relative_camera(&default_camera, &gGrid[i]->rect);
+			update_rect_relative_camera(&default_camera, &gGrid[i]->rect);
 		}
+
+		update_particle_system(&particle_sys);
+
+		for (int i = 0; i < particle_sys.count; i++)
+		{
+			update_rect_relative_camera(&default_camera, &particle_sys.ptr[i].rect);
+		}
+
 		update_rect_relative_camera(&default_camera, conor.rect);
 		update_rect_relative_camera(&default_camera, bastard.rect);
 		update_rect_relative_camera(&default_camera, long_bastard.rect);
 		previous_camera.center.x = default_camera.center.x;
 		previous_camera.center.y = default_camera.center.y;
 		//}
+
+		
 
 		// PAUSE AND WAIT TO RENDER
 		current_diff = SDL_GetTicks() - last_time;
@@ -231,14 +253,12 @@ int main()
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 100);
 		SDL_RenderClear(renderer);
 
-		//BASE_RENDER(renderer, texture, &rectangle);
-		//BASE_RENDER(renderer, texture, &rectangle_two);
-
 		GRID_RENDER(renderer, gGrid, rows, columns);
 		BASE_RENDER(renderer, bastard.texture, bastard.rect);
 		BASE_RENDER(renderer, long_bastard.texture, long_bastard.rect);
 		BASE_RENDER(renderer, conor.texture, conor.rect);
 
+		render_particle_system(renderer, &particle_sys);
 
 		SDL_RenderPresent(renderer);
 	}

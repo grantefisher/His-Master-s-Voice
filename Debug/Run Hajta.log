@@ -1,19 +1,12 @@
-﻿  masters_particle.cpp
-C:\W\His-Master-s-Voice\masters_particle.cpp(30,23): warning C4244: 'argument': conversion from 'double' to 'long', possible loss of data
-C:\W\His-Master-s-Voice\masters_particle.cpp(32,23): warning C4244: '=': conversion from 'long' to 'float', possible loss of data
-C:\W\His-Master-s-Voice\masters_particle.cpp(33,37): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\W\His-Master-s-Voice\masters_particle.cpp(57,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\W\His-Master-s-Voice\masters_particle.cpp(61,20): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\W\His-Master-s-Voice\masters_particle.cpp(62,20): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\W\His-Master-s-Voice\masters_particle.cpp(77,102): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\W\His-Master-s-Voice\masters_particle.cpp(77,102): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\W\His-Master-s-Voice\masters_particle.cpp(77,113): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\W\His-Master-s-Voice\masters_particle.cpp(77,113): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\W\His-Master-s-Voice\masters_particle.cpp(97,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters_particle.cpp(98,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters_particle.cpp(118,17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\W\His-Master-s-Voice\masters_particle.cpp(122,21): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\W\His-Master-s-Voice\masters_particle.cpp(123,21): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\W\His-Master-s-Voice\masters_particle.cpp(134,55): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters_particle.cpp(135,55): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-  Run Hajta.vcxproj -> C:\W\His-Master-s-Voice\Debug\Masters Voice.exe
+﻿  masters.cpp
+C:\W\His-Master-s-Voice\masters.cpp(259,10): error C2065: 'SDLK_': undeclared identifier
+C:\W\His-Master-s-Voice\masters.cpp(259,16): error C2146: syntax error: missing ':' before identifier 'd'
+C:\W\His-Master-s-Voice\masters.cpp(259,10): error C2131: expression did not evaluate to a constant
+C:\W\His-Master-s-Voice\masters.cpp(259,10): message : a non-constant (sub-)expression was encountered
+C:\W\His-Master-s-Voice\masters.cpp(348,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(349,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(415,38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(416,38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(517,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(518,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(259,1): error C2051: case expression not constant

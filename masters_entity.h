@@ -21,7 +21,8 @@ enum direction_input
 	up,
 	down,
 	left,
-	right
+	right,
+	undo
 };
 
 // ENTITY DATA STRUCTURES
@@ -35,8 +36,10 @@ struct Player
 	SDL_Texture* texture;
 	SDL_Rect* rect;
 	// enum player_anim_frame anim_frame;
+	vec_two prev_grid_position = { 0, 0 };
+	int undo_count = 3;
 
-	void move_player(direction_input input);
+
 	void grid_to_position(int size);
 };
 
@@ -44,9 +47,11 @@ struct Bastard
 {
 	vec_two grid_position = { 0, 0 };
 	SDL_Texture* texture;
-	SDL_Rect* rect;
-
-	void move_bastard(direction_input input);
+	SDL_Rect rect;
+	vec_two movement = { 4, 0 };
+	int iteration = 0;
+	int direction = 1;
+	bool delete_flag = false;
 	void grid_to_position(int size);
 };
 
@@ -54,8 +59,9 @@ struct Long_Bastard
 {
 	vec_two grid_position = { 0, 0 };
 	SDL_Texture* texture;
-	SDL_Rect* rect;
+	SDL_Rect rect;
 
-	void move_long_bastard(direction_input input);
+	bool stuck = false;
+	bool delete_flag = false;
 	void grid_to_position(int size);
 };

@@ -12,3 +12,9 @@ struct vec_two
 	float x; 
 	float y;
 };
+
+struct vec_twoi
+{
+	int x;
+	int y;
+};

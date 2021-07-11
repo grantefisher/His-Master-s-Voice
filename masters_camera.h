@@ -19,7 +19,10 @@ struct camera
 };
 
 
-extern  void update_rect_relative_camera(camera* deafult_cam_ref, SDL_Rect* rectangle);
+extern void update_rect_relative_camera(camera* deafult_cam_ref, SDL_Rect* rectangle);
+
+extern void update_point_relative_camera(camera* default_cam_ref, int x, int y);
+
 // TODO: update particle array relative to camera
 extern  void update_particles_relative_camera();
 

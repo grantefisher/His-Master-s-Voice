@@ -1,0 +1,16 @@
+﻿  masters.cpp
+C:\W\His-Master-s-Voice\masters.cpp(348,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(349,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(415,38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(416,38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(517,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(518,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(100,15): warning C4101: 'texture': unreferenced local variable
+C:\W\His-Master-s-Voice\masters.cpp(43,12): warning C4101: 'Event': unreferenced local variable
+  masters_level_loader.cpp
+  Generating code
+  4 of 197 functions ( 2.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Run Hajta.vcxproj -> C:\W\His-Master-s-Voice\Release\Masters Voice.exe

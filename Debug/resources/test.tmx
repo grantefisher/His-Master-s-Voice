@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.0" orientation="orthogonal" renderorder="left-up" width="16" height="12" tilewidth="50" tileheight="50" infinite="0" nextlayerid="3" nextobjectid="1">
+ <editorsettings>
+  <export target="level_seven.json" format="json"/>
+ </editorsettings>
+ <tileset firstgid="1" source="walkable_square.tsx"/>
+ <tileset firstgid="26" source="start_square.tsx"/>
+ <tileset firstgid="51" source="deadly_square.tsx"/>
+ <tileset firstgid="76" source="b_square.tsx"/>
+ <tileset firstgid="77" source="lb_square.tsx"/>
+ <tileset firstgid="78" source="door.tsx"/>
+ <tileset firstgid="79" source="test_tileset.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="16" height="12">
+  <data encoding="csv">
+81,81,81,81,79,81,79,81,81,79,81,81,81,81,81,81,
+81,81,81,81,79,79,79,81,77,81,81,79,81,79,81,81,
+81,83,81,81,79,79,79,79,79,79,81,79,81,79,79,81,
+81,81,81,81,81,81,77,79,79,79,81,79,81,81,79,81,
+81,81,81,81,81,79,79,79,81,76,81,79,81,81,79,79,
+79,79,79,79,79,79,79,79,81,81,79,81,81,81,81,81,
+79,81,76,81,81,81,81,81,81,81,81,81,81,79,81,81,
+79,79,76,81,81,76,81,79,79,81,81,79,79,79,81,81,
+76,81,81,81,81,79,81,79,81,81,81,79,81,81,81,81,
+81,81,81,81,79,79,79,79,81,81,79,79,79,81,81,81,
+79,80,79,79,81,81,81,79,79,81,81,81,81,81,81,81,
+79,79,79,79,79,79,79,81,81,79,81,81,81,81,81,81
+</data>
+ </layer>
+ <objectgroup id="2" name="Object Layer 1"/>
+</map>

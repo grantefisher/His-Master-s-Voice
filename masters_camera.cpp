@@ -10,6 +10,7 @@
 	rectangle->y = cam_ref->center.y - rectangle->orig_y;
 }
 
+
  void mod_camera_center_x(camera* cam_ref, float change_x)
 {
 	cam_ref->center.x += change_x;

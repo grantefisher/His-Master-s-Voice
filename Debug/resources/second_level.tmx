@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="50" tileheight="50" infinite="0" nextlayerid="2" nextobjectid="1">
+ <tileset firstgid="1" source="walkable_square.tsx"/>
+ <tileset firstgid="26" source="start_square.tsx"/>
+ <tileset firstgid="51" source="deadly_square.tsx"/>
+ <tileset firstgid="76" source="door.tsx"/>
+ <tileset firstgid="77" source="b_square.tsx"/>
+ <tileset firstgid="78" source="test_tileset.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="16" height="12">
+  <data encoding="csv">
+78,78,78,78,78,78,78,78,78,78,80,80,80,78,80,80,
+78,78,78,78,78,80,80,78,78,80,80,78,80,80,80,80,
+78,78,80,80,78,78,78,78,80,80,78,78,80,80,80,80,
+78,78,78,80,80,78,82,78,78,80,78,80,80,80,80,80,
+78,78,78,78,80,80,83,78,78,78,78,80,80,80,80,80,
+78,78,80,78,80,80,78,78,78,78,80,80,80,80,78,78,
+80,78,80,78,78,80,80,80,80,78,78,78,80,78,78,80,
+80,78,78,78,80,80,80,80,80,78,76,78,80,80,80,80,
+78,80,78,78,80,80,80,80,78,78,80,78,78,80,78,78,
+78,78,78,78,78,78,78,80,80,58,80,80,80,80,80,78,
+80,78,80,78,80,78,80,78,80,80,80,78,78,78,78,78,
+80,78,78,80,78,78,78,78,80,80,80,80,78,78,78,80
+</data>
+ </layer>
+</map>

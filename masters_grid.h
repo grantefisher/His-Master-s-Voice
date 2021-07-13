@@ -9,6 +9,7 @@ struct grid_square
 	bool deadly = false;
 	SDL_Texture* texture = NULL;
 	SDL_Rect rect = { 0, 0, 0, 0, 0 };
+	int animation_state = 0;
 };
 
 //extern struct grid_square* create_grid(int rows, int columns);

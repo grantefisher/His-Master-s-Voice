@@ -1,12 +1,9 @@
 ﻿  masters.cpp
-C:\W\His-Master-s-Voice\masters.cpp(259,10): error C2065: 'SDLK_': undeclared identifier
-C:\W\His-Master-s-Voice\masters.cpp(259,16): error C2146: syntax error: missing ':' before identifier 'd'
-C:\W\His-Master-s-Voice\masters.cpp(259,10): error C2131: expression did not evaluate to a constant
-C:\W\His-Master-s-Voice\masters.cpp(259,10): message : a non-constant (sub-)expression was encountered
-C:\W\His-Master-s-Voice\masters.cpp(348,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(349,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(415,38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(416,38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(517,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(518,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(259,1): error C2051: case expression not constant
+C:\W\His-Master-s-Voice\masters.cpp(398,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(399,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(467,38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(468,38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(569,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(570,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(110,15): warning C4101: 'texture': unreferenced local variable
+  Run Hajta.vcxproj -> C:\W\His-Master-s-Voice\Debug\Masters Voice.exe

@@ -40,7 +40,6 @@ int main()
 
 	SDL_Window* window;
 	SDL_Renderer* renderer;
-	SDL_Event Event;
 	bool running = true;
 	// 900 BY 700
 	if (SDL_CreateWindowAndRenderer(900, 700, SDL_WINDOW_SHOWN, &window, &renderer))
@@ -56,9 +55,20 @@ int main()
 	int refresh_rate = 0;
 	get_monitor_data(&refresh_rate, &current);
 
+	//const char* level_list = (const char*)calloc(2, sizeof(const char*));
+	const char* level_list[2] = {
+								"resources/level_two.json",
+								"resources/level_seven.json",
+								};
+
+	int current_level = 1;
+	bool restart_level = true;
+	bool next_level = false;
+
+
 	/////////////////////////////////////////////////////////////////
 	// 	   TEST OBJECT SECTION
-	//                         x  y    w    h   rx   ry
+	//									 x  y    w    h   rx   ry
 	SDL_Rect rectangle = { 0, 0, 200, 200, 200, 200 };
 	SDL_Rect rectangle_two = { 0, 0, 200, 200, 300, 400 };
 
@@ -90,11 +100,11 @@ int main()
 	SDL_Texture* long_bastard_texture = SDL_CreateTextureFromSurface(renderer, surface);
 
 
-	camera default_camera;
-	default_camera.center = { 800, 600 };
-	default_camera.dimensions = { 800, 600 };
+	camera* default_camera = new camera;
+	default_camera->center = { 800, 600 };
+	default_camera->dimensions = { 800, 600 };
 
-	camera previous_camera = default_camera;
+	camera previous_camera = *default_camera;
 
 	
 	SDL_Texture* texture;
@@ -109,8 +119,11 @@ int main()
 	int size = 50;
 
 
-	grid_square* gGrid[total_squares]; 
-
+	grid_square* gGrid = (grid_square*) calloc(total_squares, sizeof(grid_square));
+	if (gGrid == NULL)
+	{
+		printf("ERROR allocating gGrid\n");
+	}
 
 	
 
@@ -124,36 +137,36 @@ int main()
 
 
 	surface = IMG_Load("resources/deadly_square.png");
-	SDL_Texture* deadly = SDL_CreateTextureFromSurface(renderer, surface);
+	SDL_Texture* lava_one_texture = SDL_CreateTextureFromSurface(renderer, surface);
+	
+	surface = IMG_Load("resources/deadly_square_two.png");
+	SDL_Texture* lava_two_texture = SDL_CreateTextureFromSurface(renderer, surface);
+	
+	surface = IMG_Load("resources/deadly_square_three.png");
+	SDL_Texture* lava_three_texture = SDL_CreateTextureFromSurface(renderer, surface);
 
+	SDL_Texture* lava_txt_arr[] = { lava_one_texture, lava_two_texture, lava_three_texture };
 
 	int particle_sys_count;
-	Smoke_Particle_System* particle_sys_arr = new Smoke_Particle_System[100];
+	Smoke_Particle_System* particle_sys_arr = (Smoke_Particle_System*) calloc(100, sizeof(Smoke_Particle_System));
 
-	Long_Bastard long_bastard_arr[10];
+	Long_Bastard* long_bastard_arr = (Long_Bastard*) calloc(10, sizeof(Long_Bastard));
 	int lb_count;
-	Bastard bastard_arr[10];
+	Bastard* bastard_arr = (Bastard*) calloc(10, sizeof(Bastard));
 	int b_count;
 
 	surface = IMG_Load("resources/door.png");
 	SDL_Texture* door_texture = SDL_CreateTextureFromSurface(renderer, surface);
 
-	load_level("resources/level_two.json", gGrid, bastard_arr,
+	/*load_level("resources/level_seven.json", &gGrid, bastard_arr,
 			    long_bastard_arr, &conor, particle_sys_arr, 
 			    walkable, deadly, smoke_texture, 
 				bastard_texture, long_bastard_texture, door_texture,
-			    &b_count, &lb_count, &particle_sys_count);
+			    &b_count, &lb_count, &particle_sys_count);*/
 
 
 
-	for (int i = 0; i < b_count; i++)
-	{
-		bastard_arr[i].grid_to_position(size);
-	}
-	for (int i = 0; i < lb_count; i++)
-	{
-		long_bastard_arr[i].grid_to_position(size);
-	}
+
 
 
 	// GENERATE GRID
@@ -184,9 +197,7 @@ int main()
 	
 
 
-	// TODO: perform one time grid-position setup on every single entity
-	// player one-time setup
-	conor.grid_to_position(size);
+	
 
 	int p_time = 16;
 	int last_time;
@@ -195,7 +206,46 @@ int main()
 
 	while (running)
 	{
-		
+		if (restart_level || conor.lives == 0)
+		{
+			load_level(level_list[current_level], &gGrid, bastard_arr,
+					   long_bastard_arr, &conor, particle_sys_arr,
+					   walkable, lava_one_texture, smoke_texture,
+					   bastard_texture, lava_two_texture, lava_three_texture, 
+					   long_bastard_texture, door_texture,
+					   &b_count, &lb_count, &particle_sys_count);
+			for (int i = 0; i < b_count; i++)
+			{
+				bastard_arr[i].grid_to_position(size);
+			}
+			for (int i = 0; i < lb_count; i++)
+			{
+				long_bastard_arr[i].grid_to_position(size);
+			}
+			conor.lives = 3;
+			restart_level = false;
+		}
+		else if (next_level)
+		{
+			current_level++;
+			load_level(level_list[current_level], &gGrid, bastard_arr,
+					   long_bastard_arr, &conor, particle_sys_arr,
+					   walkable, lava_one_texture, smoke_texture,
+					   bastard_texture, lava_two_texture, lava_three_texture,
+					   long_bastard_texture, door_texture,
+					   &b_count, &lb_count, &particle_sys_count);
+			for (int i = 0; i < b_count; i++)
+			{
+				bastard_arr[i].grid_to_position(size);
+			}
+			for (int i = 0; i < lb_count; i++)
+			{
+				long_bastard_arr[i].grid_to_position(size);
+			}
+			next_level = false;
+		}
+
+
 		last_time = SDL_GetTicks();
 
 		// CHECK ENTITY FLAGS
@@ -256,26 +306,26 @@ int main()
 				case SDLK_s:
 					input_arr.push_back(direction_input::down);
 					break;
-				case SDLK_ d:
+				case SDLK_d:
 					input_arr.push_back(direction_input::right);
 					break;
 				case SDLK_LSHIFT:
 					input_arr.push_back(direction_input::undo);
 					break;
 				case SDLK_UP:
-					default_camera.center.y -= 5;
+					default_camera->center.y -= 5;
 					break;
 
 				case SDLK_DOWN:
-					default_camera.center.y += 5;
+					default_camera->center.y += 5;
 					break;
 
 				case SDLK_LEFT:
-					default_camera.center.x -= 5;
+					default_camera->center.x -= 5;
 					break;
 
 				case SDLK_RIGHT:
-					default_camera.center.x += 5;
+					default_camera->center.x += 5;
 					break;
 						
 				case SDLK_BACKQUOTE:
@@ -352,11 +402,12 @@ int main()
 					&& player_new_grid_position.x < grid_dimensions.y
 					&& player_new_grid_position.y >= 0
 					&& player_new_grid_position.x >= 0) {
-					if (gGrid[index]->walkable == true)
+					if (gGrid[index].walkable == true)
 					{
-						if (gGrid[index]->deadly == true)
+						if (gGrid[index].deadly == true)
 						{
 							conor.alive = false;
+							conor.lives--;
 							printf("Player has died\n");
 						}
 						conor.prev_grid_position = conor.grid_position;
@@ -370,6 +421,7 @@ int main()
 								&& bastard_arr[i].grid_position.y == conor.grid_position.y)
 							{
 								conor.alive = false;
+								conor.lives--;
 								break;
 							}
 						}
@@ -421,14 +473,14 @@ int main()
 									&& lb_new_grid_position.x >= 0)
 								{
 									bool update_lb_pos = false;
-									if (gGrid[index]->walkable == true)
+									if (gGrid[index].walkable == true)
 									{
 										bool update_lb_pos = true;
-										if (gGrid[index]->deadly == true)
+										if (gGrid[index].deadly == true)
 										{
 											temp_long_bastard->stuck = true;
 											printf("LB STUCK\n");
-											gGrid[index]->deadly = false;
+											gGrid[index].deadly = false;
 										}
 
 										// CHECK IF CURRENT LONG-BASTARD COLLIDES WITH ANY OF THE OTHER LONG BASTARDS
@@ -504,14 +556,14 @@ int main()
 			for (int b_i = 0; b_i < b_count; b_i++)
 			{
 				Bastard* temp_bastard = &bastard_arr[b_i];
-				bastard_new_grid_position = temp_bastard->grid_position;
-				if (temp_bastard->movement.x > 0)
+				bastard_new_grid_position = bastard_arr[b_i].grid_position;
+				if (bastard_arr[b_i].movement.x > 0)
 				{
-					bastard_new_grid_position.x -= temp_bastard->direction;
+					bastard_new_grid_position.x -= bastard_arr[b_i].direction;
 				}
-				if (temp_bastard->movement.y > 0)
+				if (bastard_arr[b_i].movement.y > 0)
 				{
-					bastard_new_grid_position.y -= temp_bastard->direction;
+					bastard_new_grid_position.y -= bastard_arr[b_i].direction;
 				}
 
 				int row = bastard_new_grid_position.y * grid_dimensions.y;
@@ -522,9 +574,9 @@ int main()
 					&& bastard_new_grid_position.x >= 0) {
 					int index = row + column;
 					bool update_bastard_pos = false;
-					if (gGrid[index]->walkable == true)
+					if (gGrid[index].walkable == true)
 					{
-						if (!gGrid[index]->deadly)
+						if (!gGrid[index].deadly)
 						{
 							update_bastard_pos = true;
 							
@@ -560,23 +612,22 @@ int main()
 							&& bastard_new_grid_position.y == conor.grid_position.y)
 						{
 							conor.alive = false;
+							conor.lives--;
 						}
 						if (update_bastard_pos)
 						{ 
-							temp_bastard->grid_position = bastard_new_grid_position;
-							temp_bastard->grid_to_position(size);
+							bastard_arr[b_i].grid_position = bastard_new_grid_position;
+							bastard_arr[b_i].grid_to_position(size);
 						}
 					}
 					
 
 				}
-
-				temp_bastard->iteration++;
-
-				if (temp_bastard->iteration >= temp_bastard->movement.x)
+				bastard_arr[b_i].iteration++;
+				if (bastard_arr[b_i].iteration >= bastard_arr[b_i].movement.x)
 				{
-					temp_bastard->iteration = 0;
-					temp_bastard->direction *= -1;
+					bastard_arr[b_i].iteration = 0;
+					bastard_arr[b_i].direction *= -1;
 				}
 			}
 			//////////////////////////////////
@@ -585,6 +636,42 @@ int main()
 		}
 		
 
+		// ANIMATION UPDATE
+		//////////////////////////////////
+		for (int i = 0; i < total_squares; i++)
+		{
+			// UPDATE LAVA SQUARES
+			gGrid[i].animation_state++;
+			int check = rand() % 500 + 200;
+			if (gGrid[i].deadly)
+			{
+				if (gGrid[i].animation_state >= check)
+				{
+
+					int texture_choice = (rand() % 99) + 1; 
+
+					if (texture_choice == 1)
+					{
+						gGrid[i].texture = lava_two_texture;
+						gGrid[i].animation_state = 100;
+					}
+					else if (texture_choice > 50)
+					{
+						gGrid[i].texture = lava_one_texture;
+						gGrid[i].animation_state = 0;
+					}
+					else if (texture_choice <= 50)
+					{
+						gGrid[i].texture = lava_three_texture;
+						gGrid[i].animation_state = 50;
+					}
+				}
+			}
+		}
+		
+
+		 
+		//////////////////////////////////
 
 
 
@@ -594,7 +681,7 @@ int main()
 		//////////////////////////////////
 		for (int i = 0; i < total_squares; i++)
 		{
-			update_rect_relative_camera(&default_camera, &gGrid[i]->rect);
+			update_rect_relative_camera(default_camera, &gGrid[i].rect);
 		}
 		//////////////////////////////////
 
@@ -613,10 +700,10 @@ int main()
 
 
 		// UPDATE PLAYER RELATIVE TO CAMERA
-		update_rect_relative_camera(&default_camera, conor.rect);
+		update_rect_relative_camera(default_camera, conor.rect);
 
-		previous_camera.center.x = default_camera.center.x;
-		previous_camera.center.y = default_camera.center.y;
+		previous_camera.center.x = default_camera->center.x;
+		previous_camera.center.y = default_camera->center.y;
 		//////////////////////////////////
 		// EO CAMERA UPDATE AND ENTITY MOVEMENT RELATIVE TO CAMERA
 		//////////////////////////////////
@@ -642,7 +729,7 @@ int main()
 
 		// RENDER GRID
 		/////////////////////////////
-		GRID_RENDER(renderer, gGrid, rows, columns);
+		GRID_RENDER(renderer, &gGrid, rows, columns);
 		/////////////////////////////
 
 
@@ -650,7 +737,7 @@ int main()
 		/////////////////////////////
 		for (int i = 0; i < b_count; i++)
 		{
-			update_rect_relative_camera(&default_camera, &bastard_arr[i].rect);
+			update_rect_relative_camera(default_camera, &bastard_arr[i].rect);
 			BASE_RENDER(renderer, bastard_arr[i].texture, &bastard_arr[i].rect);
 		}
 		
@@ -661,10 +748,18 @@ int main()
 		/////////////////////////////
 		for (int i = 0; i < lb_count; i++)
 		{ 
-			update_rect_relative_camera(&default_camera, &long_bastard_arr[i].rect);
+			update_rect_relative_camera(default_camera, &long_bastard_arr[i].rect);
 			BASE_RENDER(renderer, long_bastard_arr[i].texture, &long_bastard_arr[i].rect);
 		}
 		/////////////////////////////
+
+
+		// RENDER HEALTH
+		/////////////////////////////
+		//BASE_RENDER(renderer, );
+
+		/////////////////////////////
+
 
 
 		// RENDER PLAYER
@@ -684,7 +779,7 @@ int main()
 			render_rect.w = 700;
 			render_rect.h = 200;
 
-			update_rect_relative_camera(&default_camera, &render_rect);
+			update_rect_relative_camera(default_camera, &render_rect);
 
 			BASE_RENDER(renderer, death_undo_txt, &render_rect);
 		}

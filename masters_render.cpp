@@ -19,6 +19,6 @@ extern void GRID_RENDER(SDL_Renderer* renderer, grid_square** GRID, int rows, in
 	int square_count = rows * columns;
 	for (int i = 0; i < square_count; i++)
 	{
-			BASE_RENDER(renderer, GRID[i]->texture, &GRID[i]->rect);
+			BASE_RENDER(renderer, (*GRID)[i].texture, &(*GRID)[i].rect);
 	}
 }

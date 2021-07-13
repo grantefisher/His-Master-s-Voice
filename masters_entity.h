@@ -38,7 +38,7 @@ struct Player
 	// enum player_anim_frame anim_frame;
 	vec_two prev_grid_position = { 0, 0 };
 	int undo_count = 3;
-
+	int lives = 3;
 
 	void grid_to_position(int size);
 };

@@ -1,9 +1,4 @@
-﻿  masters.cpp
-C:\W\His-Master-s-Voice\masters.cpp(398,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(399,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(467,38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(468,38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(569,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(570,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(110,15): warning C4101: 'texture': unreferenced local variable
+﻿  masters_level_loader.cpp
+C:\W\His-Master-s-Voice\masters_level_loader.cpp(101,12): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'double'
+C:\W\His-Master-s-Voice\masters_level_loader.cpp(101,12): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 2 has type 'double'
   Run Hajta.vcxproj -> C:\W\His-Master-s-Voice\Debug\Masters Voice.exe

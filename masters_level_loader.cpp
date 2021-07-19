@@ -29,33 +29,36 @@ void load_level(const char* file, grid_square** grid, Bastard* bastard_arr,
 	int temp_particle_sys_count = 0;
 
 	int size = 50;
-	int square_count = grid_rows*grid_columns;
-	for (int row = grid_rows-1; row >= 0; row--)
+	int square_count = -1;
+	for (int row = 0; row < grid_rows; row++)
 	{
 		printf("row = %d\n", row);
-		for (int column = grid_columns-1; column >= 0; column--)
+		for (int column = 0; column < grid_columns; column++)
 		{
 			level_file >> input;
 
-			square_count--;
+			square_count++;
 			grid_square empty = {};
 			(*grid)[square_count] = empty;
 			(*grid)[square_count].rect = { column * size, row * size,
 										  size, size,
 										  column * size, row * size
 			};
+
+			// WALKABLE = 0
+			if (input == 0)
+			{
+			(*grid)[square_count].walkable = true;
+			(*grid)[square_count].deadly = false;
 			(*grid)[square_count].texture = walkable;
-
-			
-
-			// DEADLY
-			if (input == 79)
+			}
+			// DEADLY = 1
+			else if (input == 1)
 			{
 				(*grid)[square_count].walkable = true;
 				(*grid)[square_count].deadly = true;
 
 				int texture_choice = (rand() % 99) + 1;
-				printf("random: %d\n", texture_choice);
 				
 				if (texture_choice == 1)
 				{
@@ -78,7 +81,7 @@ void load_level(const char* file, grid_square** grid, Bastard* bastard_arr,
 				//{
 				//	{ 600 - (column * 50), (650 - (column * 50)) +1 }, // { min_x, max_x }
 				//	{ 500 -  (row * size) + 1,  500 - (row * size) + 2} , // { min_y, max_y }
- 			//		{ 1, 1 }, // { min_speed, max_speed }
+ 				//  { 1, 1 }, // { min_speed, max_speed }
 				//	{ 1, 3} // { min_frame_life, max_frame_life }
 				//};
 
@@ -88,28 +91,21 @@ void load_level(const char* file, grid_square** grid, Bastard* bastard_arr,
 				*particle_sys_count = temp_particle_sys_count;
 			}
 
-			// START = 32
-			else if (input == 83)
+			// START = 4
+			else if (input == 4)
 			{
 				(*grid)[square_count].walkable = true;
 				(*grid)[square_count].deadly = false;
 				(*grid)[square_count].texture = walkable;
 				player->grid_position = { (float)column, (float)row };
-				player->grid_to_position(size);
-				printf("col = %f\nrow = %f\n", column, row);
-				printf("grid.x = %f\ngrid.y = %f\n", player->grid_position.x, player->grid_position.y);
+				printf("CONOR grid.x: %d\nCONOR grid.y: %d \n", player->grid_position.x, player->grid_position.y);
+				(*player).grid_to_position(size);
 			}
 
-			// WALKABLE = 7
-			else if (input == 81)
-			{
-				(*grid)[square_count].walkable = true;
-				(*grid)[square_count].deadly = false;
-				(*grid)[square_count].texture = walkable;
-			}
+			
 
-			// BASTARD = 76
-			else if (input == 76)
+			// BASTARD = 2
+			else if (input == 2)
 			{
 				(*grid)[square_count].walkable = true;
 				(*grid)[square_count].deadly = false;
@@ -128,8 +124,8 @@ void load_level(const char* file, grid_square** grid, Bastard* bastard_arr,
 				*bastard_count = temp_b_count;
 			}	
 
-			// LONG BASTARD = 77
-			else if (input == 77)
+			// LONG BASTARD = 3
+			else if (input == 3)
 			{
 				(*grid)[square_count].walkable = true;
 				(*grid)[square_count].deadly = false;
@@ -145,8 +141,8 @@ void load_level(const char* file, grid_square** grid, Bastard* bastard_arr,
 				*long_bastard_count = temp_lb_count;
 			}
 
-			// END = 6
-			else if (input == 80)
+			// DOOR / END = 5
+			else if (input == 5)
 			{
 				(*grid)[square_count].walkable = true;
 				(*grid)[square_count].deadly = false;

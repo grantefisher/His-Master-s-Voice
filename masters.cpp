@@ -56,12 +56,13 @@ int main()
 	get_monitor_data(&refresh_rate, &current);
 
 	//const char* level_list = (const char*)calloc(2, sizeof(const char*));
-	const char* level_list[2] = {
-								"resources/level_two.json",
-								"resources/level_seven.json",
+	const char* level_list[3] = {
+								"resources/level_one.txt",
+								"resources/level_two.txt",
+								"resources/level_three.txt",
 								};
 
-	int current_level = 1;
+	int current_level = 0;
 	bool restart_level = true;
 	bool next_level = false;
 
@@ -222,6 +223,7 @@ int main()
 			{
 				long_bastard_arr[i].grid_to_position(size);
 			}
+			conor.grid_to_position(size);
 			conor.lives = 3;
 			restart_level = false;
 		}
@@ -242,6 +244,9 @@ int main()
 			{
 				long_bastard_arr[i].grid_to_position(size);
 			}
+			conor.grid_to_position(size);
+			conor.lives = 3;
+			restart_level = false;
 			next_level = false;
 		}
 
@@ -404,6 +409,10 @@ int main()
 					&& player_new_grid_position.x >= 0) {
 					if (gGrid[index].walkable == true)
 					{
+						if (gGrid[index].texture == door_texture)
+						{
+							next_level = true;
+						}
 						if (gGrid[index].deadly == true)
 						{
 							conor.alive = false;

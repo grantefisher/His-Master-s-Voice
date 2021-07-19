@@ -225,6 +225,8 @@ int main()
 			}
 			conor.grid_to_position(size);
 			conor.lives = 3;
+			conor.alive = true;
+			
 			restart_level = false;
 		}
 		else if (next_level)
@@ -385,9 +387,10 @@ int main()
 				if (!conor.alive)
 				{
 					conor.alive = true;
+					conor.grid_position = conor.prev_grid_position;
+					conor.grid_to_position(size);
 				}
-				conor.grid_position = conor.prev_grid_position;
-				conor.grid_to_position(size);
+				
 
 				break;
 			}
@@ -698,10 +701,10 @@ int main()
 
 		// UPDATE PARTICLE SYSTEM 
 		//////////////////////////////////
-		/*for (int i = 0; i < particle_sys_count; i++)
+		for (int i = 0; i < particle_sys_count; i++)
 		{
 			particle_sys_arr[i].update();
-		}*/
+		}
 	
 		
 		//////////////////////////////////
@@ -800,12 +803,12 @@ int main()
 
 
 		// TODO: write particle system for loop renderer
-		// RENDER PARTICLE SYSTEMS
+		// RENDER SMOKE PARTICLE SYSTEMS
 		/////////////////////////////
-		/*for (int i = 0; i < particle_sys_count; i++)
+		for (int i = 0; i < particle_sys_count; i++)
 		{
-			particle_sys_arr[i].render(renderer, &default_camera);
-		}*/
+			particle_sys_arr[i].render(renderer, smoke_texture);
+		}
 		/////////////////////////////
 
 		SDL_RenderPresent(renderer);

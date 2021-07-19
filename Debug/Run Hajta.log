@@ -1,4 +1,14 @@
-﻿  masters_level_loader.cpp
-C:\W\His-Master-s-Voice\masters_level_loader.cpp(101,12): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'double'
-C:\W\His-Master-s-Voice\masters_level_loader.cpp(101,12): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 2 has type 'double'
+﻿  masters.cpp
+C:\W\His-Master-s-Voice\masters.cpp(406,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(407,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(479,38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(480,38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(581,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(582,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(111,15): warning C4101: 'texture': unreferenced local variable
+  masters_level_loader.cpp
+C:\W\His-Master-s-Voice\masters_level_loader.cpp(85,14): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\W\His-Master-s-Voice\masters_level_loader.cpp(85,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  masters_particle.cpp
+  Generating Code...
   Run Hajta.vcxproj -> C:\W\His-Master-s-Voice\Debug\Masters Voice.exe

@@ -9,17 +9,19 @@
 
 void Smoke_Particle_System::update()
 {
-	for (int i = 0; i < 500; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		Smoke_Particle* particle = &pool[i];
 
 		// GENERATE NEW PARTICLE IF NECESSARY
 		if (particle->frame_life_time <= 0)
 		{
-			particle->x = x_range.y;
-			particle->y = y_range.y;
+			particle->x = x_range.x + (rand() % (x_range.y - x_range.x + 1));
+			particle->y = y_range.x + (rand() % (y_range.y - y_range.x + 1));
 
-			particle->y_change = (rand() % speed_range.y) + speed_range.x;
+			particle->size = size_range.x + (rand() % (size_range.y - size_range.x + 1));
+
+			particle->y_change = speed_range.x + (rand() % (speed_range.y - speed_range.x + 1));
 
 			particle->frame_life_time = (rand() % frame_life_range.x) + frame_life_range.y;
 		}
@@ -34,11 +36,13 @@ void Smoke_Particle_System::update()
 	}
 }
 
-void Smoke_Particle_System::render(SDL_Renderer* renderer, camera* cam)
+void Smoke_Particle_System::render(SDL_Renderer* renderer, SDL_Texture* texture)
 {
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 0);
-	for (int i = 0; i < 500; i++)
+	SDL_Rect temp;
+	for (int i = 0; i < 10; i++)
 	{
-		SDL_RenderDrawPoint(renderer, cam->center.x - pool[i].x, cam->center.y - pool[i].y);
+		temp = { pool[i].x, pool[i].y, pool[i].size, pool[i].size , 0, 0 };
+		BASE_RENDER(renderer, texture, &temp);
 	}
 }

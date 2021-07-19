@@ -48,9 +48,9 @@ void load_level(const char* file, grid_square** grid, Bastard* bastard_arr,
 			// WALKABLE = 0
 			if (input == 0)
 			{
-			(*grid)[square_count].walkable = true;
-			(*grid)[square_count].deadly = false;
-			(*grid)[square_count].texture = walkable;
+				(*grid)[square_count].walkable = true;
+				(*grid)[square_count].deadly = false;
+				(*grid)[square_count].texture = walkable;
 			}
 			// DEADLY = 1
 			else if (input == 1)
@@ -76,16 +76,17 @@ void load_level(const char* file, grid_square** grid, Bastard* bastard_arr,
 					(*grid)[square_count].animation_state = 50;
 				}
 
-				// MAKE SMOKE PARTICLE SYSTEM
-				//Smoke_Particle_System smoke_system = 
-				//{
-				//	{ 600 - (column * 50), (650 - (column * 50)) +1 }, // { min_x, max_x }
-				//	{ 500 -  (row * size) + 1,  500 - (row * size) + 2} , // { min_y, max_y }
- 				//  { 1, 1 }, // { min_speed, max_speed }
-				//	{ 1, 3} // { min_frame_life, max_frame_life }
-				//};
+				//MAKE SMOKE PARTICLE SYSTEM
+				Smoke_Particle_System smoke_system = 
+				{
+					{  ((grid_columns - column) * 50) + 1, ((grid_columns - column)*50) + 50}, // { min_x, max_x }
+					{ ((grid_rows - row) * size) + 10, ((grid_rows - row) * size) + 46} , // { min_y, max_y },
+					{ 1, 3 }, // { min_size, max_size }
+ 					{ -1, -.5 }, // { min_speed, max_speed }
+					{ 10, 15} // { min_frame_life, max_frame_life }
+				};
 
-				//smoke_system_arr[temp_particle_sys_count] = smoke_system;
+				smoke_system_arr[temp_particle_sys_count] = smoke_system;
 
 				temp_particle_sys_count++;
 				*particle_sys_count = temp_particle_sys_count;
@@ -98,7 +99,6 @@ void load_level(const char* file, grid_square** grid, Bastard* bastard_arr,
 				(*grid)[square_count].deadly = false;
 				(*grid)[square_count].texture = walkable;
 				player->grid_position = { (float)column, (float)row };
-				printf("CONOR grid.x: %d\nCONOR grid.y: %d \n", player->grid_position.x, player->grid_position.y);
 				(*player).grid_to_position(size);
 			}
 

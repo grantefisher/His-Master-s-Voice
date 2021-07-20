@@ -21,7 +21,7 @@ extern  void GRID_COORD_RENDER(SDL_Renderer* renderer, vec_two position, SDL_Tex
 
 extern  void PLAYER_RENDER(SDL_Renderer* renderer, camera* cam_ptr, Player* player);
 
-extern  void BASE_RENDER_ALPHA(SDL_Renderer*, SDL_Texture*, SDL_Rect*, Uint8 alpha);
+extern  void BASE_RENDER_ALPHA(SDL_Renderer*, SDL_Texture*, SDL_Rect*, int alpha);
 
 // TODO: ROTATE default center will be calculated to the real center of the object?
 extern  void BASE_RENDER_ROTATE(SDL_Renderer*, SDL_Texture*, SDL_Rect*, const double angle);

@@ -40,14 +40,20 @@ int main()
 
 	SDL_Window* window;
 	SDL_Renderer* renderer;
+
+	
+
 	bool running = true;
 	// 900 BY 700
-	if (SDL_CreateWindowAndRenderer(900, 700, SDL_WINDOW_SHOWN, &window, &renderer))
+	if (SDL_CreateWindowAndRenderer(900, 700, SDL_WINDOW_FULLSCREEN, &window, &renderer))
 	{
 		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "couldn't create window and renderer: %s", SDL_GetError());
 		return 3;
 	}
 	
+	SDL_RenderSetLogicalSize(renderer, 900, 700);
+	
+
 	SDL_SetWindowTitle(window, "His Master's Voice");
 	
 
@@ -86,7 +92,7 @@ int main()
 
 	Player conor;
 	conor.texture = player_texture;
-	SDL_Rect conor_rect = { 0, 0, 50, 80, 0, 0 };
+	SDL_Rect conor_rect = { 0, 0, 40, 60, 0, 0 };
 	conor.rect = &conor_rect;
 	conor.grid_position = { 14, 9 }; 
 
@@ -159,51 +165,15 @@ int main()
 	surface = IMG_Load("resources/door.png");
 	SDL_Texture* door_texture = SDL_CreateTextureFromSurface(renderer, surface);
 
-	/*load_level("resources/level_seven.json", &gGrid, bastard_arr,
-			    long_bastard_arr, &conor, particle_sys_arr, 
-			    walkable, deadly, smoke_texture, 
-				bastard_texture, long_bastard_texture, door_texture,
-			    &b_count, &lb_count, &particle_sys_count);*/
-
-
-
-
-
-
-	// GENERATE GRID
-	/*
-	for (int row = 0; row < rows; row++)
-	{
-		for (int column = 0; column < columns; column++)
-		{
-			square_count++;
-			gGrid[square_count] = new grid_square();
-			gGrid[square_count]->rect = { column * size, row * size,
-										  size, size,
-									      column * size, row * size
-			};
-			gGrid[square_count]->walkable = true;
-			gGrid[square_count]->deadly = false;
-			gGrid[square_count]->texture = texture;
-		}
-	}
-	*/
-		
-
-
-	
-	//gGrid[100]->texture = texture;
-	//gGrid[100]->deadly = true;
-	/////////////////////////////////////////////////////////////////
-	
-
-
-	
 
 	int p_time = 16;
 	int last_time;
 	int current_diff;
 	int bastard_frame_iterator = 0;
+
+	int lava_animation_iterator = 0;
+
+	int temp_door_change = -1;
 
 	while (running)
 	{
@@ -337,6 +307,9 @@ int main()
 						
 				case SDLK_BACKQUOTE:
 					break;
+				case SDLK_ESCAPE:
+					running = false;
+					break;
 				default:
 					break;
 				}
@@ -400,8 +373,7 @@ int main()
 			}
 
 
-			// TODO: check if there was a movement input at all
-			if (conor.alive)
+			if (input_per_frame && conor.alive)
 			{
 				int row = player_new_grid_position.y * grid_dimensions.y;
 				int column = player_new_grid_position.x;
@@ -650,17 +622,35 @@ int main()
 
 		// ANIMATION UPDATE
 		//////////////////////////////////
+		lava_animation_iterator++;
+		if (lava_animation_iterator >= 55)
+		{
+			lava_animation_iterator = 0;
+			for (int i = 0; i < total_squares; i++)
+			{
+				if (gGrid[i].deadly)
+				{
+					if (gGrid[i].alpha > 110)
+					{
+						gGrid[i].alpha = 90 + (rand() % (110 - 90 + 1));
+					}
+					gGrid[i].alpha++;
+				}
+			}
+		}
+
+
 		for (int i = 0; i < total_squares; i++)
 		{
 			// UPDATE LAVA SQUARES
-			gGrid[i].animation_state++;
-			int check = rand() % 500 + 200;
 			if (gGrid[i].deadly)
 			{
+				gGrid[i].animation_state++;
+				int check = rand() % 500 + 200;
 				if (gGrid[i].animation_state >= check)
 				{
-
-					int texture_choice = (rand() % 99) + 1; 
+					gGrid[i].animation_state = 0;
+					int texture_choice = (rand() % 99) + 1;
 
 					if (texture_choice == 1)
 					{
@@ -679,6 +669,7 @@ int main()
 					}
 				}
 			}
+	
 		}
 		
 
@@ -752,7 +743,6 @@ int main()
 			update_rect_relative_camera(default_camera, &bastard_arr[i].rect);
 			BASE_RENDER(renderer, bastard_arr[i].texture, &bastard_arr[i].rect);
 		}
-		
 		/////////////////////////////
 
 
@@ -779,10 +769,10 @@ int main()
 		BASE_RENDER(renderer, conor.texture, conor.rect);
 		/////////////////////////////
 
-		// RENDER DEATH TEXT
-		/////////////////////////////
+		
 
 		// if dead
+		////////////////////////////
 		if (!conor.alive)
 		{
 			SDL_Rect render_rect;
@@ -795,14 +785,18 @@ int main()
 
 			BASE_RENDER(renderer, death_undo_txt, &render_rect);
 		}
+		////////////////////////////
+
 
 		// if dead and out of undo
-
-
+		// TODO: RENDER DEATH TEXT
+		// TODO: RESTART LEVEL PROMPT
+		////////////////////////////
+		 
 		/////////////////////////////
 
 
-		// TODO: write particle system for loop renderer
+
 		// RENDER SMOKE PARTICLE SYSTEMS
 		/////////////////////////////
 		for (int i = 0; i < particle_sys_count; i++)

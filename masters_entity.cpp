@@ -9,7 +9,7 @@
 void Player::grid_to_position(int size) // size of each grid square
 {
 	rect->orig_x = (grid_position.x) * size;
-	rect->orig_y = (grid_position.y + 1) * size;
+	rect->orig_y = (grid_position.y + .5) * size;
 }
 
 

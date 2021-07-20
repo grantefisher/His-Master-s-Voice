@@ -1,14 +1,9 @@
 ﻿  masters.cpp
-C:\W\His-Master-s-Voice\masters.cpp(406,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(407,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(479,38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(480,38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(581,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(582,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(111,15): warning C4101: 'texture': unreferenced local variable
-  masters_level_loader.cpp
-C:\W\His-Master-s-Voice\masters_level_loader.cpp(85,14): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\W\His-Master-s-Voice\masters_level_loader.cpp(85,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  masters_particle.cpp
-  Generating Code...
+C:\W\His-Master-s-Voice\masters.cpp(378,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(379,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(451,38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(452,38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(553,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(554,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(117,15): warning C4101: 'texture': unreferenced local variable
   Run Hajta.vcxproj -> C:\W\His-Master-s-Voice\Debug\Masters Voice.exe

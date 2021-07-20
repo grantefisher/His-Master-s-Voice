@@ -32,7 +32,6 @@ void load_level(const char* file, grid_square** grid, Bastard* bastard_arr,
 	int square_count = -1;
 	for (int row = 0; row < grid_rows; row++)
 	{
-		printf("row = %d\n", row);
 		for (int column = 0; column < grid_columns; column++)
 		{
 			level_file >> input;
@@ -147,7 +146,6 @@ void load_level(const char* file, grid_square** grid, Bastard* bastard_arr,
 				(*grid)[square_count].walkable = true;
 				(*grid)[square_count].deadly = false;
 				(*grid)[square_count].texture = door_texture;
-				printf("END FOUND\n");
 			}
 
 			

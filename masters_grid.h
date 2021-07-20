@@ -10,7 +10,7 @@ struct grid_square
 	SDL_Texture* texture = NULL;
 	SDL_Rect rect = { 0, 0, 0, 0, 0 };
 	int animation_state = 0;
+	int alpha = 255;
 };
 
 //extern struct grid_square* create_grid(int rows, int columns);
-

@@ -13,7 +13,7 @@ extern const int grid_columns = 16;
 // 32 = START
 // 7 = WALKABLE
 // 58 = DEADLY
-void load_level(const char* file, grid_square** grid, Bastard* bastard_arr, 
+int load_level(const char* file, grid_square** grid, Bastard* bastard_arr, 
 				Long_Bastard* long_bastard_arr, Player* player, Smoke_Particle_System* smoke_system_arr,
 				SDL_Texture* walkable, SDL_Texture* deadly, SDL_Texture* smoke_texture,
 				SDL_Texture* bastard_texture,  SDL_Texture* lava_two_texture, SDL_Texture* lava_three_texture, 
@@ -23,6 +23,10 @@ void load_level(const char* file, grid_square** grid, Bastard* bastard_arr,
 	int input;
 	std::ifstream level_file;
 	level_file.open(file);
+	if (!level_file)
+	{
+		return 1;
+	}
 
 	int temp_b_count = 0;
 	int temp_lb_count = 0;

@@ -54,13 +54,14 @@ int load_level(const char* file, grid_square** grid, Bastard* bastard_arr,
 				(*grid)[square_count].walkable = true;
 				(*grid)[square_count].deadly = false;
 				(*grid)[square_count].texture = walkable;
+				(*grid)[square_count].alpha = 110;
 			}
 			// DEADLY = 1
 			else if (input == 1)
 			{
 				(*grid)[square_count].walkable = true;
 				(*grid)[square_count].deadly = true;
-
+				
 				int texture_choice = (rand() % 99) + 1;
 				
 				if (texture_choice == 1)
@@ -98,6 +99,7 @@ int load_level(const char* file, grid_square** grid, Bastard* bastard_arr,
 			// START = 4
 			else if (input == 4)
 			{
+				(*grid)[square_count].alpha = 110;
 				(*grid)[square_count].walkable = true;
 				(*grid)[square_count].deadly = false;
 				(*grid)[square_count].texture = walkable;
@@ -113,7 +115,7 @@ int load_level(const char* file, grid_square** grid, Bastard* bastard_arr,
 				(*grid)[square_count].walkable = true;
 				(*grid)[square_count].deadly = false;
 				(*grid)[square_count].texture = walkable;
-
+				(*grid)[square_count].alpha = 110;
 				bastard_arr[temp_b_count].grid_position = { (float)column, (float)row };
 				bastard_arr[temp_b_count].texture = bastard_texture;
 				SDL_Rect bastard_rect = { 0, 0, 60, 60, 0, 0 };
@@ -133,13 +135,14 @@ int load_level(const char* file, grid_square** grid, Bastard* bastard_arr,
 				(*grid)[square_count].walkable = true;
 				(*grid)[square_count].deadly = false;
 				(*grid)[square_count].texture = walkable;
-
+				(*grid)[square_count].alpha = 110;
 				long_bastard_arr[temp_lb_count].grid_position = { (float)column, (float)row };
 				long_bastard_arr[temp_lb_count].texture = long_bastard_texture;
 				SDL_Rect long_bastard_rect = { 0, 0, 60, 40, 0, 0 };
 				long_bastard_arr[temp_lb_count].rect = long_bastard_rect;
 				long_bastard_arr[temp_lb_count].grid_to_position(size);
-				
+				long_bastard_arr[temp_lb_count].stuck = false;
+
 				temp_lb_count++;
 				*long_bastard_count = temp_lb_count;
 			}

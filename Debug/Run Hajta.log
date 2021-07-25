@@ -1,12 +1,17 @@
 ﻿  masters.cpp
-C:\W\His-Master-s-Voice\masters.cpp(432,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(433,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(521,39): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(522,39): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(608,40): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(609,40): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(644,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(645,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(792,22): warning C4553: '==': result of expression not used; did you intend '='?
-C:\W\His-Master-s-Voice\masters.cpp(155,15): warning C4101: 'texture': unreferenced local variable
+C:\W\His-Master-s-Voice\masters.cpp(434,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(435,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(523,39): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(524,39): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(610,40): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(611,40): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(646,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(647,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(794,22): warning C4553: '==': result of expression not used; did you intend '='?
+C:\W\His-Master-s-Voice\masters.cpp(156,15): warning C4101: 'texture': unreferenced local variable
+  masters_level_loader.cpp
+C:\W\His-Master-s-Voice\masters_level_loader.cpp(89,14): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\W\His-Master-s-Voice\masters_level_loader.cpp(89,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+C:\W\His-Master-s-Voice\masters_level_loader.cpp(161): warning C4715: 'load_level': not all control paths return a value
   Run Hajta.vcxproj -> C:\W\His-Master-s-Voice\Debug\Masters Voice.exe

@@ -64,11 +64,12 @@ int main()
 	get_monitor_data(&refresh_rate, &current);
 
 	//const char* level_list = (const char*)calloc(2, sizeof(const char*));
-	int level_count = 3;
-	const char* level_list[3] = {
+	int level_count = 4;
+	const char* level_list[4] = {
 								"resources/level_one.txt",
 								"resources/level_two.txt",
 								"resources/level_three.txt",
+								"resources/level_seven.txt"
 								};
 
 	int current_level = 0;
@@ -195,9 +196,9 @@ int main()
 	Smoke_Particle_System* particle_sys_arr = (Smoke_Particle_System*) calloc(100, sizeof(Smoke_Particle_System));
 
 	Long_Bastard* long_bastard_arr = (Long_Bastard*) calloc(10, sizeof(Long_Bastard));
-	int lb_count;
+	int lb_count  = 0;
 	Bastard* bastard_arr = (Bastard*) calloc(10, sizeof(Bastard));
-	int b_count;
+	int b_count = 0;
 
 	surface = IMG_Load("resources/door.png");
 	SDL_Texture* door_texture = SDL_CreateTextureFromSurface(renderer, surface);
@@ -249,6 +250,7 @@ int main()
 				current_level++;
 				if (current_level > level_count - 1)
 				{
+					printf("level too high trigerred\n");
 					return 0;
 				}
 				load_level(level_list[current_level], &gGrid, bastard_arr,
@@ -721,9 +723,9 @@ int main()
 				{
 					if (gGrid[i].deadly)
 					{
-						if (gGrid[i].alpha > 110)
+						if (gGrid[i].alpha > 240)
 						{
-							gGrid[i].alpha = 90 + (rand() % (110 - 90 + 1));
+							gGrid[i].alpha = 200 + (rand() % (240 - 200 + 1));
 						}
 						gGrid[i].alpha++;
 					}

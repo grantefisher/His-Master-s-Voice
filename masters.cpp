@@ -26,25 +26,39 @@
 
 int main()
 {
-	if (!(IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG))
-	{
-		printf("SDL IMAGE did not initialize\n");
-	}
 
+    // INIT EXTERNALS
+    ///////////////////////////
+    
+    // INITIALIZE SDL
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 	{
 		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "couldn't initialize SDL: %s", SDL_GetError());
 		return 3;
 	}
 
+    // INITIALIZE SDL IMAGE
+    if (!(IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG))
+    {
+        printf("SDL IMAGE could not initizalize\n");
+    }
+
+    ///////////////////////////
+    // EO INIT EXTERNALS
+    ///////////////////////////
+
+
+
+    
+    
+
+    // CREATE AND SETUP WINDOW AND RENDERER
+    ///////////////////////////
 
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 
-	
-
-	bool running = true;
-	// 900 BY 700
+	// NOTE: window is 900 BY 700
 	if (SDL_CreateWindowAndRenderer(900, 700, SDL_WINDOW_FULLSCREEN, &window, &renderer))
 	{
 		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "couldn't create window and renderer: %s", SDL_GetError());
@@ -63,43 +77,48 @@ int main()
 	int refresh_rate = 0;
 	get_monitor_data(&refresh_rate, &current);
 
-	//const char* level_list = (const char*)calloc(2, sizeof(const char*));
-	int level_count = 4;
+	///////////////////////////
+    // EO CREATE AND SETUP WINDOW AND RENDERER
+    ///////////////////////////
+    
+
+	
+	
+	// ALLOCATE ON STACK
+	///////////////////////////
+	// TODO: allocate on HEAP rather than STACK
 	const char* level_list[4] = {
 								"resources/level_one.txt",
 								"resources/level_two.txt",
 								"resources/level_three.txt",
 								"resources/level_seven.txt"
 								};
+	/////////////////////////////////
+	// EO ALLOCATE LEVEL LIST ON STACK
+	/////////////////////////////////
 
-	int current_level = 0;
-	bool restart_level = true;
-	bool next_level = false;
+	
 
 
-	/////////////////////////////////////////////////////////////////
-	// 	   TEST OBJECT SECTION
-	//									 x  y    w    h   rx   ry
-	SDL_Rect rectangle = { 0, 0, 200, 200, 200, 200 };
-	SDL_Rect rectangle_two = { 0, 0, 200, 200, 300, 400 };
 
+	// ALLOCATE SURFACES AND TEXTURES
+	/////////////////////////////////
 	SDL_Surface* surface = IMG_Load("resources/smoke.png");
 	SDL_Texture* smoke_texture = SDL_CreateTextureFromSurface(renderer, surface);
 
-
 	surface = IMG_Load("resources/fireman.png");
+	
+
+	// NOTE: THIS SETS THE WINDOW ICON
+	/////////////////////////////////
 	SDL_SetWindowIcon(window, surface);
+	/////////////////////////////////
+
+
 	SDL_Texture* player_texture = SDL_CreateTextureFromSurface(renderer, surface);
 
 	surface = IMG_Load("resources/death_undo.png");
 	SDL_Texture* death_undo_txt = SDL_CreateTextureFromSurface(renderer, surface);
-
-	Player conor;
-	conor.texture = player_texture;
-	SDL_Rect conor_rect = { 0, 0, 40, 60, 0, 0 };
-	conor.rect = &conor_rect;
-	conor.grid_position = { 14, 9 }; 
-	conor.move_state = player_move_state::walking;
 
 	surface = IMG_Load("resources/conor_stand.png");
 	SDL_Texture* p_frame_stand = SDL_CreateTextureFromSurface(renderer, surface);
@@ -116,6 +135,7 @@ int main()
 	surface = IMG_Load("resources/conor_walk_four.png");
 	SDL_Texture* p_frame_w_four = SDL_CreateTextureFromSurface(renderer, surface);
 	
+	// PLAYER FRAMES (right) ALLOCATED ON HEAP BY SDL
 	SDL_Texture* player_frames_right[5] = {p_frame_stand, p_frame_w_one, p_frame_w_two, p_frame_w_three, p_frame_w_four};
 
 	surface = IMG_Load("resources/conor_stand_left.png");
@@ -133,31 +153,73 @@ int main()
 	surface = IMG_Load("resources/conor_walk_four_left.png");
 	SDL_Texture* p_frame_w_four_left = SDL_CreateTextureFromSurface(renderer, surface);
 
+	// PLAYER FRAMES (left) ALLOCATED ON HEAP BY SDL
 	SDL_Texture* player_frames_left[5] = { p_frame_stand_left, p_frame_w_one_left, p_frame_w_two_left, p_frame_w_three_left, p_frame_w_four_left };
 
-
-
+	// LOAD GRID SQUARE TEXTURES
 	surface = IMG_Load("resources/bastard.png");
 	SDL_Texture* bastard_texture = SDL_CreateTextureFromSurface(renderer, surface);
-
-	
 
 	surface = IMG_Load("resources/long_bastard.png");
 	SDL_Texture* long_bastard_texture = SDL_CreateTextureFromSurface(renderer, surface);
 
+	surface = IMG_Load("resources/door.png");
+	SDL_Texture* door_texture = SDL_CreateTextureFromSurface(renderer, surface);
 
+	surface = IMG_Load("resources/walkable_square.png");
+	SDL_Texture* walkable = SDL_CreateTextureFromSurface(renderer, surface);
+
+	surface = IMG_Load("resources/deadly_square.png");
+	SDL_Texture* lava_one_texture = SDL_CreateTextureFromSurface(renderer, surface);
+
+	surface = IMG_Load("resources/deadly_square_two.png");
+	SDL_Texture* lava_two_texture = SDL_CreateTextureFromSurface(renderer, surface);
+
+	surface = IMG_Load("resources/deadly_square_three.png");
+	SDL_Texture* lava_three_texture = SDL_CreateTextureFromSurface(renderer, surface);
+
+	// CREATE LAVA TEXTURE ARRAY
+	SDL_Texture* lava_txt_arr[] = { lava_one_texture, lava_two_texture, lava_three_texture };
+	///////////////////////////
+	// EO LOAD TEXTURES
+	///////////////////////////
+
+
+
+
+
+
+	// CREATE PLAYER ON HEAP
+	///////////////////////////
+	Player conor;
+	conor.texture = player_texture;
+	SDL_Rect conor_rect = { 0, 0, 40, 60, 0, 0 };
+	conor.rect = &conor_rect;
+	conor.grid_position = { 14, 9 };
+	conor.move_state = player_move_state::walking;
+	///////////////////////////
+
+
+
+	// CREATE CAMERA ON HEAP
+	///////////////////////////
 	camera* default_camera = new camera;
 	default_camera->center = { 800, 600 };
 	default_camera->dimensions = { 800, 600 };
 
 	camera previous_camera = *default_camera;
+	///////////////////////////
+	
+
 
 	
-	SDL_Texture* texture;
 
-	const int rows = 12;
+
+	// CREATE GRID
+	///////////////////////////
+	// TODO: unless rows and columns will not be constant, NEED to #define these variables for preprocessing
+	const int rows = 12;  
 	const int columns = 16;
-
 
 	vec_two grid_dimensions = { rows, columns };
 	const int total_squares = rows * columns;
@@ -168,57 +230,79 @@ int main()
 	if (gGrid == NULL)
 	{
 		printf("ERROR allocating gGrid\n");
+		return 0;
 	}
-
-	
-
-	surface = IMG_Load("resources/walkable_square.png");
-	if (surface == NULL)
-	{
-		SDL_Log("error loading bmp: %s\n", SDL_GetError());
-	}
-
-	SDL_Texture* walkable = SDL_CreateTextureFromSurface(renderer, surface);
+	//////////////////////////////////
+	// EO CREATE GRID
+	//////////////////////////////////
+			
 
 
-	surface = IMG_Load("resources/deadly_square.png");
-	SDL_Texture* lava_one_texture = SDL_CreateTextureFromSurface(renderer, surface);
-	
-	surface = IMG_Load("resources/deadly_square_two.png");
-	SDL_Texture* lava_two_texture = SDL_CreateTextureFromSurface(renderer, surface);
-	
-	surface = IMG_Load("resources/deadly_square_three.png");
-	SDL_Texture* lava_three_texture = SDL_CreateTextureFromSurface(renderer, surface);
 
-	SDL_Texture* lava_txt_arr[] = { lava_one_texture, lava_two_texture, lava_three_texture };
 
+
+
+	// CREATE ARRAYS ON HEAP
+	///////////////////////////
+	// PARTRICLE SYSTEM STACK VARIABLES
 	int particle_sys_count;
+	// PARTICLE SYSTEM HEAP POINTER
 	Smoke_Particle_System* particle_sys_arr = (Smoke_Particle_System*) calloc(100, sizeof(Smoke_Particle_System));
 
-	Long_Bastard* long_bastard_arr = (Long_Bastard*) calloc(10, sizeof(Long_Bastard));
-	int lb_count  = 0;
-	Bastard* bastard_arr = (Bastard*) calloc(10, sizeof(Bastard));
+	// B/LB COUNT VARS ON STACK
+	int lb_count = 0;
 	int b_count = 0;
 
-	surface = IMG_Load("resources/door.png");
-	SDL_Texture* door_texture = SDL_CreateTextureFromSurface(renderer, surface);
+	// B/LB HEAP ARRAY POINTERS
+	Long_Bastard* long_bastard_arr = (Long_Bastard*) calloc(10, sizeof(Long_Bastard));
+	Bastard* bastard_arr = (Bastard*) calloc(10, sizeof(Bastard));
+	///////////////////////////
 
 
+
+
+
+
+	// GAME STATE, FRAME, and ANIMATION VARS ON STACK
+	///////////////////////////
 	game_state GAME_STATE = game_state::in_game;;
+
+	int level_count = 4;
+	int current_level = 0;
+	bool restart_level = true;
+	bool next_level = false;
+
+	bool running = true;
 
 	int p_time = 16;
 	int last_time;
 	int current_diff;
 	int bastard_frame_iterator = 0;
-
 	int lava_animation_iterator = 0;
-
 	int temp_door_change = -1;
+	///////////////////////////
+	// EO GAME STATE, FRAME, and ANIMATION VARS ON STACK
+	///////////////////////////
 
+
+
+
+
+
+	// GAME LOOP
+	//////////////////////////////////
 	while (running)
 	{
+		// CHECK GAME STATE
+		///////////////////////////
+
+		// GAME STATE is IN_GAME
+		//////////////////////////////////
 		if (GAME_STATE == game_state::in_game)
 		{
+
+			// CHECK TO RESTART LEVEL
+			//////////////////////////////////
 			if (restart_level || conor.lives == 0)
 			{
 				if (current_level > level_count - 1)
@@ -245,6 +329,14 @@ int main()
 				conor.slope = { 0, 0 };
 				restart_level = false;
 			}
+			//////////////////////////////////
+			// EO CHECK TO RESTART LEVEL
+			//////////////////////////////////
+
+
+
+			// CHECK GO TO NEXT LEVEL
+			//////////////////////////////////
 			else if (next_level)
 			{
 				current_level++;
@@ -274,9 +366,21 @@ int main()
 				restart_level = false;
 				next_level = false;
 			}
+			//////////////////////////////////
+			// EO CHECK NEXT LEVEL
+			//////////////////////////////////
 
 
+
+
+			// UPDATE FPS TIMER
+			//////////////////////////////////
 			last_time = SDL_GetTicks();
+			//////////////////////////////////
+
+
+
+
 
 			// CHECK ENTITY FLAGS
 			//////////////////////////////////
@@ -309,7 +413,9 @@ int main()
 
 
 
-			//////////////////////////////////
+
+
+
 			// INPUT LOOP
 			//////////////////////////////////
 			SDL_Event Event;
@@ -376,7 +482,12 @@ int main()
 			//////////////////////////////////
 
 
-			// PLAYER/LONG BASTARD MOVEMENT UPDATE
+
+
+
+
+			// PLAYER/LB MOVEMENT UPDATE
+			//////////////////////////////////
 			bool input_per_frame = false;
 
 			for (direction_input input : input_arr) {
@@ -599,6 +710,8 @@ int main()
 				//////////////////////////////////
 			}
 
+
+
 			// PLAYER SMOOTH MOVEMENT
 			//////////////////////////////////
 			for (int i = 0; i < 4; i++)
@@ -618,11 +731,18 @@ int main()
 				}
 			}
 			//////////////////////////////////
+			// EO PLAYER SMOOTH MOVEMENT
+			//////////////////////////////////
+
+			//////////////////////////////////
+			// EO PLAYER/LB SMOOTH MOVEMENT
+			//////////////////////////////////
 
 
 
 
-			// BASTARD MOVEMENT UPDATE
+
+			// B MOVEMENT UPDATE
 			//////////////////////////////////
 			bastard_frame_iterator++;
 			if (bastard_frame_iterator >= 35)
@@ -707,13 +827,18 @@ int main()
 						bastard_arr[b_i].direction *= -1;
 					}
 				}
-				//////////////////////////////////
-				// EO BASTARD UPDATE
-				//////////////////////////////////
+				
 			}
+			//////////////////////////////////
+			// EO B UPDATE
+			//////////////////////////////////
 
 
-			// ANIMATION UPDATE
+
+
+
+
+			// LAVA_SQUARE ANIMATION UPDATE
 			//////////////////////////////////
 			lava_animation_iterator++;
 			if (lava_animation_iterator >= 55)
@@ -733,9 +858,13 @@ int main()
 			}
 
 
+
+
+			// LAVA_SQUARE ANIMATION UPDATE
+			//////////////////////////////////
+
 			for (int i = 0; i < total_squares; i++)
 			{
-				// UPDATE LAVA SQUARES
 				if (gGrid[i].deadly)
 				{
 					gGrid[i].animation_state++;
@@ -762,10 +891,19 @@ int main()
 						}
 					}
 				}
-
 			}
 
+			//////////////////////////////////
+			// EO UPDATE LAVA SQUARE ANIMATION
+			//////////////////////////////////
+
+
+
+
+
+
 			// PLAYER ANIMATION
+			//////////////////////////////////
 			if (conor.move_state == player_move_state::walking)
 			{
 				if (conor.current_frame == player_anim_frame::stand)
@@ -803,19 +941,35 @@ int main()
 			{
 				conor.texture = player_frames_left[int(conor.current_frame)];
 			}
+			
 			//////////////////////////////////
+			// EO PLAYER ANIMATION UPDATE
+			//////////////////////////////////
+
+
+
 
 
 
 			// UPDATE ENTITIES RELATIVE TO THE CAMERA
 			//////////////////////////////////
-			// UPDATE GRID relativce to camera
-			//////////////////////////////////
+			
+			// update grid relativce to camera
 			for (int i = 0; i < total_squares; i++)
 			{
 				update_rect_relative_camera(default_camera, &gGrid[i].rect);
-			}
+			}	
+
+			// UPDATE PLAYER RELATIVE TO CAMERA
+			update_rect_relative_camera(default_camera, conor.rect);
+			// UPDATE CAMERA previous_camera
+			previous_camera.center.x = default_camera->center.x;
+			previous_camera.center.y = default_camera->center.y;
+
 			//////////////////////////////////
+			// EO CAMERA UPDATE AND ENTITY MOVEMENT RELATIVE TO CAMERA
+			//////////////////////////////////
+
 
 
 
@@ -825,31 +979,24 @@ int main()
 			{
 				particle_sys_arr[i].update();
 			}
-
-
 			//////////////////////////////////
 
-
-
-			// UPDATE PLAYER RELATIVE TO CAMERA
-			update_rect_relative_camera(default_camera, conor.rect);
-
-			previous_camera.center.x = default_camera->center.x;
-			previous_camera.center.y = default_camera->center.y;
-			//////////////////////////////////
-			// EO CAMERA UPDATE AND ENTITY MOVEMENT RELATIVE TO CAMERA
-			//////////////////////////////////
 
 
 
 			// PAUSE AND WAIT TO RENDER
 			/////////////////////////////
+			// TODO: FRAME-INDEPENDENT PROCESSING
 			current_diff = SDL_GetTicks() - last_time;
 			while (current_diff < 16) {
 				current_diff = SDL_GetTicks() - last_time;
 			}
 			/////////////////////////////
 
+
+
+			// RENDERING
+			//////////////////////////////////////////////////////
 
 			// CLEAR SCREEN
 			//////////////////////////////////
@@ -859,10 +1006,15 @@ int main()
 
 
 
+
+
 			// RENDER GRID
 			/////////////////////////////
 			GRID_RENDER(renderer, &gGrid, rows, columns);
 			/////////////////////////////
+
+
+
 
 
 			// RENDER BASTARDS
@@ -875,6 +1027,9 @@ int main()
 			/////////////////////////////
 
 
+
+
+
 			// RENDER LONG BASTARDS
 			/////////////////////////////
 			for (int i = 0; i < lb_count; i++)
@@ -885,6 +1040,9 @@ int main()
 			/////////////////////////////
 
 
+
+
+
 			// RENDER HEALTH
 			/////////////////////////////
 			//BASE_RENDER(renderer, );
@@ -893,10 +1051,13 @@ int main()
 
 
 
+
 			// RENDER PLAYER
 			/////////////////////////////
 			BASE_RENDER(renderer, conor.texture, conor.rect);
 			/////////////////////////////
+
+
 
 
 
@@ -917,12 +1078,19 @@ int main()
 			////////////////////////////
 
 
+
+
+
+
 			// if dead and out of undo
 			// TODO: RENDER DEATH TEXT
 			// TODO: RESTART LEVEL PROMPT
 			////////////////////////////
-
 			/////////////////////////////
+
+
+
+
 
 
 
@@ -937,10 +1105,32 @@ int main()
 			SDL_RenderPresent(renderer);
 
 
+			//////////////////////////////////////////////////////
+			// EO RENDERING
+			//////////////////////////////////////////////////////
+
+
 		}
 		
+		///////////////////////////
+		// EO GAME STATE is IN_GAME
+		///////////////////////////
+
+
+
+
+
+
+
+
+		// GAME STATE is PAUSED
+		///////////////////////////
 		else if (GAME_STATE == game_state::paused)
 		{
+
+
+			// paused INPUT LOOP
+			///////////////////////////
 			SDL_Event Event;
 			std::vector<direction_input> input_arr;
 
@@ -970,13 +1160,10 @@ int main()
 					case SDLK_d:
 						input_arr.push_back(direction_input::right);
 						break;
-
-					// ENTER READ AS UNDO DIRECTION INPUT
+					// NOTE: ENTER READ AS UNDO DIRECTION INPUT
 					case SDLK_KP_ENTER:
 						input_arr.push_back(direction_input::undo);
 						break;
-
-
 					case SDLK_ESCAPE:
 						GAME_STATE = game_state::in_game;
 						break;
@@ -991,6 +1178,11 @@ int main()
 			//////////////////////////////////
 
 
+
+
+
+
+
 			// PAUSE RENDER LOOP
 			//////////////////////////////////
 			SDL_SetRenderDrawColor(renderer, 0, 0, 0, 100);
@@ -1002,14 +1194,62 @@ int main()
 			//////////////////////////////////
 			// EO PAUSE RENDER LOOP
 			//////////////////////////////////
-		}
 
+
+		}
+		///////////////////////////
+		// EO GAME STATE is PAUSED
+		///////////////////////////
+
+		
+
+
+
+
+		// GAME STATE is CLOSE_GAME
+		///////////////////////////
 		else if (GAME_STATE == game_state::close_game)
 		{
 			running = false;
 		}
+		///////////////////////////
+		// EO GAME STATE is CLOSE_GAME
+		///////////////////////////
+
+
+
+
+
+
+
+		//////////////////////////
+		// EO CHECK GAME STATE
+		//////////////////////////
 	}
+
+	///////////////////////////
+	// EO GAME LOOP
+	///////////////////////////
+
+
+
+
+
+
+	// CLOSE PROGRAM, DEALLOCATE MEMORY
+	///////////////////////////
+	// TODO: properly deallocate memory
+
 	SDL_Quit();
+
+	///////////////////////////
+	// EO CLOSE PROGRAM, DEALLOCATE MEMORY
+	///////////////////////////
+
+
+
+
+
 
 	return 0;
 }

@@ -12,5 +12,3 @@ struct grid_square
 	int animation_state = 0;
 	int alpha = 255;
 };
-
-//extern struct grid_square* create_grid(int rows, int columns);

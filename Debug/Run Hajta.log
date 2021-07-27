@@ -1,17 +1,31 @@
 ﻿  masters.cpp
-C:\W\His-Master-s-Voice\masters.cpp(434,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(435,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(523,39): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(524,39): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(610,40): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(611,40): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(646,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(647,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(794,22): warning C4553: '==': result of expression not used; did you intend '='?
-C:\W\His-Master-s-Voice\masters.cpp(156,15): warning C4101: 'texture': unreferenced local variable
+C:\W\His-Master-s-Voice\masters_entity.h(61,36): error C3533: a parameter cannot have a type that contains 'auto'
+C:\W\His-Master-s-Voice\masters.cpp(545,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(546,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(634,39): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(635,39): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(723,40): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(724,40): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(766,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(767,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(932,22): warning C4553: '==': result of expression not used; did you intend '='?
+  masters_entity.cpp
+C:\W\His-Master-s-Voice\masters_entity.h(61,36): error C3533: a parameter cannot have a type that contains 'auto'
+C:\W\His-Master-s-Voice\masters_entity.cpp(11,35): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters_entity.cpp(12,40): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters_entity.cpp(19,32): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters_entity.cpp(20,32): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters_entity.cpp(25,32): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters_entity.cpp(26,32): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  masters_grid.cpp
   masters_level_loader.cpp
-C:\W\His-Master-s-Voice\masters_level_loader.cpp(89,14): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\W\His-Master-s-Voice\masters_level_loader.cpp(89,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters_entity.h(61,36): error C3533: a parameter cannot have a type that contains 'auto'
+C:\W\His-Master-s-Voice\masters_level_loader.cpp(85,14): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\W\His-Master-s-Voice\masters_level_loader.cpp(85,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  masters_particle.cpp
+C:\W\His-Master-s-Voice\masters_entity.h(61,36): error C3533: a parameter cannot have a type that contains 'auto'
+  masters_render.cpp
+C:\W\His-Master-s-Voice\masters_entity.h(61,36): error C3533: a parameter cannot have a type that contains 'auto'
+  mastsers_update.cpp
+C:\W\His-Master-s-Voice\masters_entity.h(61,36): error C3533: a parameter cannot have a type that contains 'auto'
   Generating Code...
-C:\W\His-Master-s-Voice\masters_level_loader.cpp(161): warning C4715: 'load_level': not all control paths return a value
-  Run Hajta.vcxproj -> C:\W\His-Master-s-Voice\Debug\Masters Voice.exe

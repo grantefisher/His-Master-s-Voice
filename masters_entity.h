@@ -58,6 +58,7 @@ enum direction_input
 };
 
 
+void grid_to_position(auto& pointer);
 
 // ENTITY DATA STRUCTURES
 struct Player

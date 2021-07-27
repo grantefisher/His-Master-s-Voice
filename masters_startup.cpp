@@ -11,6 +11,5 @@
 		*refresh_rate = current->refresh_rate;
 	}
 	SDL_Log("Display #%d: current display mode is %dx%dpx @ %dhz", 0, current->w, current->h, *refresh_rate);
-
 }
 

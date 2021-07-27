@@ -13,7 +13,7 @@ extern const int grid_columns = 16;
 // 32 = START
 // 7 = WALKABLE
 // 58 = DEADLY
-int load_level(const char* file, grid_square** grid, Bastard* bastard_arr, 
+void load_level(const char* file, grid_square** grid, Bastard* bastard_arr, 
 				Long_Bastard* long_bastard_arr, Player* player, Smoke_Particle_System* smoke_system_arr,
 				SDL_Texture* walkable, SDL_Texture* deadly, SDL_Texture* smoke_texture,
 				SDL_Texture* bastard_texture,  SDL_Texture* lava_two_texture, SDL_Texture* lava_three_texture, 
@@ -23,10 +23,6 @@ int load_level(const char* file, grid_square** grid, Bastard* bastard_arr,
 	int input;
 	std::ifstream level_file;
 	level_file.open(file);
-	if (!level_file)
-	{
-		return 1;
-	}
 
 	int temp_b_count = 0;
 	int temp_lb_count = 0;
@@ -87,7 +83,7 @@ int load_level(const char* file, grid_square** grid, Bastard* bastard_arr,
 					{ ((grid_rows - row) * size) + 10, ((grid_rows - row) * size) + 46} , // { min_y, max_y },
 					{ 1, 3 }, // { min_size, max_size }
  					{ -1, -.5 }, // { min_speed, max_speed }
-					{ 10, 15} // { min_frame_life, max_frame_life }
+					{ 15, 30} // { min_frame_life, max_frame_life }
 				};
 
 				smoke_system_arr[temp_particle_sys_count] = smoke_system;

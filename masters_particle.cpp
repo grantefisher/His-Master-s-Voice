@@ -23,7 +23,7 @@ void Smoke_Particle_System::update()
 
 			particle->y_change = speed_range.x + (rand() % (speed_range.y - speed_range.x + 1));
 
-			particle->frame_life_time = (rand() % frame_life_range.x) + frame_life_range.y;
+			particle->frame_life_time = frame_life_range.x + (rand() % (frame_life_range.y - frame_life_range.x + 1));
 		}
 
 		// UPDATE PARTICLE

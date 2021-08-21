@@ -72,7 +72,7 @@ struct Player
 	SDL_Rect* rect;
 	int frame_iterator = 0;
 	enum player_move_state move_state = player_move_state::standing;
-	enum player_anim_frame current_frame;
+	enum player_anim_frame current_frame = player_anim_frame::stand;
 
 	bool facing_right = true;
 

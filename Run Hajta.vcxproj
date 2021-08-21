@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="audio.c" />
     <ClCompile Include="masters.cpp" />
     <ClCompile Include="masters_camera.cpp" />
     <ClCompile Include="masters_entity.cpp" />
@@ -158,6 +159,7 @@
     <ClCompile Include="mastsers_update.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="audio.h" />
     <ClInclude Include="masters_animation.h" />
     <ClInclude Include="masters_camera.h" />
     <ClInclude Include="masters_consts.h" />

@@ -9,19 +9,24 @@
 #include "masters_render.h"
 #include "masters_update.h"
 #include "masters_particle.h"
+#include "audio.h"
 
 #include <SDL.h>
 #include <SDL_image.h>
 #include <stdio.h>
 #include <vector>
 
-// TODO: delete this later
+// TODO: delete this later	
 // NOTE: only using for std::cin input and debugging
 #include <iostream>
 
 // FIXES PROBLEM WITH EXTERNAL MAIN FUNCTION IN SDL
 #undef main 
 
+
+
+
+#define MUS_PATH "./resources/lava.wav"
 
 
 int main()
@@ -37,12 +42,21 @@ int main()
 		return 3;
 	}
 
+	if (SDL_Init(SDL_INIT_AUDIO) < 0)
+	{
+		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "couldn't initialize SDL AUDIO: %s", SDL_GetError());
+		return 3;
+	}
+
+	initAudio();
+
     // INITIALIZE SDL IMAGE
     if (!(IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG))
     {
         printf("SDL IMAGE could not initizalize\n");
     }
 
+    
     ///////////////////////////
     // EO INIT EXTERNALS
     ///////////////////////////
@@ -88,10 +102,10 @@ int main()
 	///////////////////////////
 	// TODO: allocate on HEAP rather than STACK
 	const char* level_list[4] = {
-								"resources/level_one.txt",
-								"resources/level_two.txt",
-								"resources/level_three.txt",
-								"resources/level_seven.txt"
+								"resources/level complete/level_one.txt",
+								"resources/level complete/level_two.txt",
+								"resources/level complete/level_three.txt",
+								"resources/level complete/level_seven.txt"
 								};
 	/////////////////////////////////
 	// EO ALLOCATE LEVEL LIST ON STACK
@@ -163,6 +177,9 @@ int main()
 	surface = IMG_Load("resources/long_bastard.png");
 	SDL_Texture* long_bastard_texture = SDL_CreateTextureFromSurface(renderer, surface);
 
+	surface = IMG_Load("resources/broken_long_bastard.png");
+	SDL_Texture* broken_long_bastard_texture = SDL_CreateTextureFromSurface(renderer, surface);
+
 	surface = IMG_Load("resources/door.png");
 	SDL_Texture* door_texture = SDL_CreateTextureFromSurface(renderer, surface);
 
@@ -196,7 +213,7 @@ int main()
 	SDL_Rect conor_rect = { 0, 0, 40, 60, 0, 0 };
 	conor.rect = &conor_rect;
 	conor.grid_position = { 14, 9 };
-	conor.move_state = player_move_state::walking;
+	conor.move_state = player_move_state::standing;
 	///////////////////////////
 
 
@@ -267,7 +284,7 @@ int main()
 	///////////////////////////
 	game_state GAME_STATE = game_state::in_game;;
 
-	int level_count = 4;
+	int level_count = 5;
 	int current_level = 0;
 	bool restart_level = true;
 	bool next_level = false;
@@ -275,7 +292,7 @@ int main()
 	bool running = true;
 
 	int p_time = 16;
-	int last_time = SDL_GetTicks();;
+	int last_time = SDL_GetTicks();
 	int current_diff;
 	int bastard_frame_iterator = 0;
 	int lava_animation_iterator = 0;
@@ -283,6 +300,19 @@ int main()
 	///////////////////////////
 	// EO GAME STATE, FRAME, and ANIMATION VARS ON STACK
 	///////////////////////////
+
+
+
+
+
+    // CREATE AUDIO STREAM
+    /////////////////////////////
+	Audio* lava_audio = createAudio("resources/lava.wav", 1, SDL_MIX_MAXVOLUME);
+	playMusicFromMemory(lava_audio, SDL_MIX_MAXVOLUME);
+	///playSound("resources/highlands.wav", SDL_MIX_MAXVOLUME / 3);
+
+
+	/////////////////////////////
 
 
 
@@ -300,7 +330,6 @@ int main()
 		//////////////////////////////////
 		if (GAME_STATE == game_state::in_game)
 		{
-
 			current_diff = SDL_GetTicks() - last_time;
 			if (current_diff > 16)
 			{
@@ -327,6 +356,7 @@ int main()
 						long_bastard_arr[i].grid_to_position(size);
 					}
 					conor.grid_to_position(size);
+                    conor.prev_grid_position = conor.grid_position;
 					conor.lives = 3;
 					conor.alive = true;
 					conor.slope = { 0, 0 };
@@ -364,6 +394,7 @@ int main()
 						long_bastard_arr[i].grid_to_position(size);
 					}
 					conor.grid_to_position(size);
+                    conor.prev_grid_position = conor.grid_position;
 					conor.slope = { 0, 0 };
 					conor.lives = 3;
 					restart_level = false;
@@ -609,6 +640,7 @@ int main()
 
 
 
+								// TODO: refactor
 								// LONG BASTARD MOVEMENT UPDATE
 								//////////////////////////////////
 								for (int lb_i = 0; lb_i < lb_count; lb_i++)
@@ -651,6 +683,7 @@ int main()
 													temp_long_bastard->stuck = true;
 													printf("LB STUCK\n");
 													gGrid[index].deadly = false;
+													temp_long_bastard->texture = broken_long_bastard_texture;
 												}
 
 												// CHECK IF CURRENT LONG-BASTARD COLLIDES WITH ANY OF THE OTHER LONG BASTARDS
@@ -661,8 +694,13 @@ int main()
 														if (lb_new_grid_position.x == long_bastard_arr[lb_j].grid_position.x
 															&& lb_new_grid_position.y == long_bastard_arr[lb_j].grid_position.y)
 														{
-															update_lb_pos = false;
-															break;
+															// CHECK IF OTHER LB is in LAVA
+															int lava_grid_index = long_bastard_arr[lb_j].grid_position.x + (long_bastard_arr[lb_j].grid_position.y * grid_dimensions.y);
+															if (gGrid[lava_grid_index].square_type != grid_square_type::lava)
+															{
+																update_lb_pos = false;
+																break;
+															}
 														}
 													}
 												}
@@ -913,27 +951,25 @@ int main()
 					{
 						conor.current_frame = walking_one;
 					}
-					else if (conor.frame_iterator % 2 == 0)
+					else if (conor.frame_iterator % 5 == 0)
 					{
 						conor.current_frame = iterate_player_frame(conor.current_frame);
 						if (conor.current_frame == player_anim_frame::stand)
 						{
 							conor.current_frame = iterate_player_frame(conor.current_frame);
 						}
-						if (conor.frame_iterator >= 12)
-						{
-							conor.frame_iterator = 0;
-						}
-
 					}
-
 					conor.frame_iterator++;
-
 				}
 				if (conor.slope.x == 0 && conor.slope.y == 0)
 				{
-					conor.move_state == player_move_state::standing;
+					conor.move_state = player_move_state::standing;
 					conor.current_frame = player_anim_frame::stand;
+					conor.frame_iterator = 0;
+				}
+				else
+				{
+					conor.move_state = player_move_state::walking;
 				}
 
 				if (conor.facing_right)
@@ -1226,7 +1262,9 @@ int main()
 
 
 
-
+    // CLOSE EVERYTHING
+	endAudio();
+	freeAudio(lava_audio);
 
 
 	// CLOSE PROGRAM, DEALLOCATE MEMORY
@@ -1246,3 +1284,5 @@ int main()
 
 	return 0;
 }
+
+

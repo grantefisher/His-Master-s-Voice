@@ -57,6 +57,7 @@ void load_level(const char* file, grid_square** grid, Bastard* bastard_arr,
 			{
 				(*grid)[square_count].walkable = true;
 				(*grid)[square_count].deadly = true;
+				(*grid)[square_count].square_type = grid_square_type::lava;
 				
 				int texture_choice = (rand() % 99) + 1;
 				

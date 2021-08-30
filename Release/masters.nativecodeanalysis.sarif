@@ -1,0 +1,865 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C26812",
+          "message": {
+            "text": "The enum type 'SDL_bool' is unscoped. Prefer 'enum class' over 'enum' (Enum.3)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/SDL2-2.0.14/include/SDL_rect.h"
+                },
+                "region": {
+                  "startLine": 103,
+                  "startColumn": 29
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "SDL_PointInRect",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26812",
+          "message": {
+            "text": "The enum type 'player_anim_frame' is unscoped. Prefer 'enum class' over 'enum' (Enum.3)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/W/His-Master-s-Voice/masters_entity.h"
+                },
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 26,
+                  "endLine": 27,
+                  "endColumn": 26
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "?iterate_player_frame@@YA?AW4player_anim_frame@@W41@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26812",
+          "message": {
+            "text": "The enum type 'game_state' is unscoped. Prefer 'enum class' over 'enum' (Enum.3)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/W/His-Master-s-Voice/masters.cpp"
+                },
+                "region": {
+                  "startLine": 348,
+                  "startColumn": 13,
+                  "endLine": 348,
+                  "endColumn": 38
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "main",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26812",
+          "message": {
+            "text": "The enum type 'pause_menu_state' is unscoped. Prefer 'enum class' over 'enum' (Enum.3)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/W/His-Master-s-Voice/masters.cpp"
+                },
+                "region": {
+                  "startLine": 390,
+                  "startColumn": 22,
+                  "endLine": 390,
+                  "endColumn": 54
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "main",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26812",
+          "message": {
+            "text": "The enum type 'direction_input' is unscoped. Prefer 'enum class' over 'enum' (Enum.3)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/W/His-Master-s-Voice/masters.cpp"
+                },
+                "region": {
+                  "startLine": 1378,
+                  "startColumn": 62,
+                  "endLine": 1378,
+                  "endColumn": 62
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "main",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'Player::position' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/W/His-Master-s-Voice/masters_entity.h"
+                },
+                "region": {
+                  "startLine": 94,
+                  "startColumn": 1,
+                  "endLine": 94,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0Player@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Player::position"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'Player::texture' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/W/His-Master-s-Voice/masters_entity.h"
+                },
+                "region": {
+                  "startLine": 94,
+                  "startColumn": 1,
+                  "endLine": 94,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0Player@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Player::texture"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'Player::rect' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/W/His-Master-s-Voice/masters_entity.h"
+                },
+                "region": {
+                  "startLine": 94,
+                  "startColumn": 1,
+                  "endLine": 94,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0Player@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Player::rect"
+          }
+        },
+        {
+          "ruleId": "C26812",
+          "message": {
+            "text": "The enum type 'player_move_state' is unscoped. Prefer 'enum class' over 'enum' (Enum.3)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/W/His-Master-s-Voice/masters_entity.h"
+                },
+                "region": {
+                  "startLine": 82,
+                  "startColumn": 57,
+                  "endLine": 82,
+                  "endColumn": 57
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0Player@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.29.30038.1",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "commandLine": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30037\\bin\\HostX86\\x86\\c1xx.dll\" -ACf{1F7B090C-16DB-4822-966A-A93D26ED4681} -ACpmspft140.dll -Alint -D_PREFAST_ -D_AST_FE_ -Analyze -zm0x0026C1C0 -il C:\\Users\\grant\\AppData\\Local\\Temp\\_CL_c8cff28cast -typedil -f masters.cpp -Ze -D_MSC_EXTENSIONS -Zp8 -Gs -pc \\:/ -D_MSC_VER=1929 -D_MSC_FULL_VER=192930038 -D_MSC_BUILD=1 -D_WIN32 -D_M_IX86=600 -D_M_IX86_FP=2 -GR -D_CPPRTTI -nologo -W 3 -diagnostics:column -D_GUARDOVERFLOW_CRT_ALLOCATORS=1 -GF -Og -Ot -Oi -ltcg -DCODE_ANALYSIS -DWIN32 -DNDEBUG -D_CONSOLE -D_UNICODE -DUNICODE -EHs -D_CPPUNWIND -EHc -MD -D_MT -D_DLL -GS -D_M_FP_PRECISE -permissive- -Zc:wchar_t -Zc:forScope -FoRelease\\masters.obj -FdRelease\\vc142.pdb -external:W 3 -Gd -analyze:projectdirectory C:\\W\\His-Master-s-Voice -analyze:rulesetdirectory ;C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Team Tools\\Static Analysis Tools\\\\Rule Sets; -analyze:ruleset C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Team Tools\\Static Analysis Tools\\Rule Sets\\NativeRecommendedRules.ruleset -analyze:quiet -analyze:plugin C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30037\\bin\\HostX86\\x86\\EspXEngine.dll -FC -errorreport:prompt -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30037\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30037\\include -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30037\\atlmfc\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30037\\atlmfc\\include -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Auxiliary\\VS\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Auxiliary\\VS\\include -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -external:I C:\\W\\His-Master-s-Voice\\Include\\um -I C:\\W\\His-Master-s-Voice\\Include\\um -I C:\\SDL2-2.0.14\\SDL2_image-2.0.5\\include -I C:\\SDL2-2.0.14\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30037\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30037\\atlmfc\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Auxiliary\\VS\\include -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -I C:\\W\\His-Master-s-Voice\\Include\\um",
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///C:/SDL2-2.0.14/include/SDL_rect.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "23ddaab2bfb50d0b675647b8889efdd6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/W/His-Master-s-Voice/masters_entity.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "b9ed00525dacd3da0d1e161d33f5c4bc"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/w/his-master-s-voice/mastsers_update.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "631354c41c2d6eca9ed0dd5a07b7e95d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/w/his-master-s-voice/masters_update.h"
+          },
+          "hashes": {
+            "md5": "9dfced5baf5f185c86a2568146e8018e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/w/his-master-s-voice/masters_globals.h"
+          },
+          "hashes": {
+            "md5": "cbfec2a76f643e8eeb2e16333ca309ce"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/w/his-master-s-voice/masters_math.h"
+          },
+          "hashes": {
+            "md5": "49862e3fea8e8ed8f43d744c7c20cb62"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl.h"
+          },
+          "hashes": {
+            "md5": "7ae1e2f1779df44840d755ea20d8baa8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_main.h"
+          },
+          "hashes": {
+            "md5": "afdbda186156f040faefc1ae5f68bfad"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_stdinc.h"
+          },
+          "hashes": {
+            "md5": "a9362778bb81750d122b8516d7da4934"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_config.h"
+          },
+          "hashes": {
+            "md5": "f185aace5597c3eedcfedaf253900ccc"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_platform.h"
+          },
+          "hashes": {
+            "md5": "daadbad14a5a994fcf299ea3473bd9b0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/begin_code.h"
+          },
+          "hashes": {
+            "md5": "97f229f44b900effa7282810ad9ea719"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/close_code.h"
+          },
+          "hashes": {
+            "md5": "a26b8517c6ffe500410236eaac87b93a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_assert.h"
+          },
+          "hashes": {
+            "md5": "0489ce67b50a6d0e1f214decd7199541"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_atomic.h"
+          },
+          "hashes": {
+            "md5": "82dc5a0039b4b65dd8f7735cbe91b833"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_audio.h"
+          },
+          "hashes": {
+            "md5": "483da5a9134d18332cff2fca8618660d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_error.h"
+          },
+          "hashes": {
+            "md5": "563ccc75e6f72fa3764d5b91e1181456"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_endian.h"
+          },
+          "hashes": {
+            "md5": "53e31de3307792df3022709a24ecabf5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_mutex.h"
+          },
+          "hashes": {
+            "md5": "8c24782ea8a347f9fec584adc1171302"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_thread.h"
+          },
+          "hashes": {
+            "md5": "b848bc43d18afe86e0df6585983d790f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_rwops.h"
+          },
+          "hashes": {
+            "md5": "eb09d57ddb1ed83ad51b8c53d8c255a1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_clipboard.h"
+          },
+          "hashes": {
+            "md5": "d9ad479dcd3a62f3a93c29782ad6142b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_cpuinfo.h"
+          },
+          "hashes": {
+            "md5": "2949baef67ed58c87c42aaed6b25ddab"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_events.h"
+          },
+          "hashes": {
+            "md5": "117fca64224db155a9476e1ba77f66e9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_video.h"
+          },
+          "hashes": {
+            "md5": "8cb3c84a69765d8e89bad9f1a5a9f188"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_pixels.h"
+          },
+          "hashes": {
+            "md5": "acb19d0fa0dc40c741034944580b5c9f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_surface.h"
+          },
+          "hashes": {
+            "md5": "d4f98e8b85c8ffb6f674756d58f466b9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_blendmode.h"
+          },
+          "hashes": {
+            "md5": "9f669f794d1edaa13e5716949042767e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_keyboard.h"
+          },
+          "hashes": {
+            "md5": "5d31d71379cf4c5e3651e14dd14fb28e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_keycode.h"
+          },
+          "hashes": {
+            "md5": "838c5db2e8c43351ab6c708e825a6e18"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_scancode.h"
+          },
+          "hashes": {
+            "md5": "ac1050d9a662e048d5be912b8a845eb4"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_mouse.h"
+          },
+          "hashes": {
+            "md5": "21305b1f7839ce06b76a131894b12539"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_joystick.h"
+          },
+          "hashes": {
+            "md5": "187686afc7c5336751de43eb4278786b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_gamecontroller.h"
+          },
+          "hashes": {
+            "md5": "b37c688ba147d0d82a2d3267af57125d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_sensor.h"
+          },
+          "hashes": {
+            "md5": "939972405e0293829c83961883693c57"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_quit.h"
+          },
+          "hashes": {
+            "md5": "4e03d1dc5a31794bf999dfd68f837628"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_gesture.h"
+          },
+          "hashes": {
+            "md5": "e1e05cf8014469b6b85e517bceccc206"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_touch.h"
+          },
+          "hashes": {
+            "md5": "ddfe8f37070da7c6e35d6447cfeef77c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_filesystem.h"
+          },
+          "hashes": {
+            "md5": "32a57ba496923362039bc053707f4ba4"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_haptic.h"
+          },
+          "hashes": {
+            "md5": "491646ea936444e825696f1661eed88b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_hints.h"
+          },
+          "hashes": {
+            "md5": "79eeff619cf499d76d54411cc3bda87b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_loadso.h"
+          },
+          "hashes": {
+            "md5": "3c938a938b768e38cf003cfab384af93"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_log.h"
+          },
+          "hashes": {
+            "md5": "7a00df013729823205665f8a4e8fc892"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_messagebox.h"
+          },
+          "hashes": {
+            "md5": "fa3310371657ed78aeae08ba510d16f5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_metal.h"
+          },
+          "hashes": {
+            "md5": "17f20722d650d6d6032fdf15fec51fd8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_power.h"
+          },
+          "hashes": {
+            "md5": "4cc4f1ee5395a39b926f809fbaccd698"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_render.h"
+          },
+          "hashes": {
+            "md5": "33a466fc1b2bfa8648a93099b8af0874"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_shape.h"
+          },
+          "hashes": {
+            "md5": "3061096cc46a8bc80dcea26a303f7e61"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_system.h"
+          },
+          "hashes": {
+            "md5": "c532eaaa9a5b3114e25bfc24c69815c3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_timer.h"
+          },
+          "hashes": {
+            "md5": "53f9d522af76ed8fedea6eaf8a496f12"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_version.h"
+          },
+          "hashes": {
+            "md5": "1f0d10bbd8ab986c1d2ae4744cf4b980"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_locale.h"
+          },
+          "hashes": {
+            "md5": "b3373d355b210a73157c63bfb3ef1001"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/include/sdl_misc.h"
+          },
+          "hashes": {
+            "md5": "6a37f7338ba912e27d1b0ba63f8641b8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/w/his-master-s-voice/masters_grid.h"
+          },
+          "hashes": {
+            "md5": "12641ea27b74ac08342d46cbe24477b6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/w/his-master-s-voice/masters_startup.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "18cf362d6bb9b8e1b7677d533f3fb6da"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/w/his-master-s-voice/masters_startup.h"
+          },
+          "hashes": {
+            "md5": "b1b98496c0cc6680d9683e098e0b28bc"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/w/his-master-s-voice/masters_render.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "087ca1d48bef589654e13ee5d33d8b69"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/w/his-master-s-voice/masters_render.h"
+          },
+          "hashes": {
+            "md5": "544afaf18a11c278d1dc591c209a26d8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/w/his-master-s-voice/masters_camera.h"
+          },
+          "hashes": {
+            "md5": "c082174f63687d2230b70df2b036c634"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/w/his-master-s-voice/masters_particle.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "6d72cb59fe0b2ea258843f2ac8767416"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/w/his-master-s-voice/masters_particle.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "88c02af6ed465839fa7af4dc2610af1b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/w/his-master-s-voice/masters_level_loader.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "b27fe0b6c76ee3beeabe456ab50f9af0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/w/his-master-s-voice/masters_level_loader.h"
+          },
+          "hashes": {
+            "md5": "1fb1ad3c958c9f689dc51eab6e935646"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/w/his-master-s-voice/masters_grid.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "b9c557e02975f745f1e56fec2512e908"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/w/his-master-s-voice/masters_entity.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "04afe2ad88b93f7edaba8619fa5c7d59"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/w/his-master-s-voice/masters_camera.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "15cfaefaa663ea3d3a649c0e7ca95bd6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/W/His-Master-s-Voice/masters.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "c44a93a827443f59ef1b81b6bc14faf5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/w/his-master-s-voice/audio.h"
+          },
+          "hashes": {
+            "md5": "6bd2e5457af062684fadd505e30dc4a0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/sdl2-2.0.14/sdl2_image-2.0.5/include/sdl_image.h"
+          },
+          "hashes": {
+            "md5": "3ad4ced493bf6ee900936905e0ebd218"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,11 +1,12 @@
 ﻿  masters.cpp
-C:\W\His-Master-s-Voice\masters.cpp(579,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(580,18): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(669,40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(670,40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(698,36): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(764,41): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(765,41): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(807,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(808,18): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(717,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(718,18): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(811,40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(812,40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(840,36): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(912,41): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(913,41): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(958,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(959,18): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(1302,23): warning C4018: '<': signed/unsigned mismatch
   Run Hajta.vcxproj -> C:\W\His-Master-s-Voice\Debug\Masters Voice.exe

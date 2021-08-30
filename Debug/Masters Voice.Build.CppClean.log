@@ -4,14 +4,20 @@ c:\w\his-master-s-voice\debug\mastsers_update.obj
 c:\w\his-master-s-voice\debug\masters_startup.obj
 c:\w\his-master-s-voice\debug\masters_render.obj
 c:\w\his-master-s-voice\debug\masters_particle.obj
+c:\w\his-master-s-voice\debug\masters_level_loader.obj
 c:\w\his-master-s-voice\debug\masters_grid.obj
 c:\w\his-master-s-voice\debug\masters_entity.obj
 c:\w\his-master-s-voice\debug\masters_camera.obj
 c:\w\his-master-s-voice\debug\masters.obj
-c:\w\his-master-s-voice\debug\masters_level_loader.obj
+c:\w\his-master-s-voice\debug\audio.obj
 c:\w\his-master-s-voice\debug\masters voice.exe
 c:\w\his-master-s-voice\debug\masters voice.ilk
 c:\w\his-master-s-voice\debug\masters voice.pdb
+c:\w\his-master-s-voice\debug\masters.obj.enc
+c:\w\his-master-s-voice\debug\masters_grid.obj.enc
+c:\w\his-master-s-voice\debug\masters_level_loader.obj.enc
+c:\w\his-master-s-voice\debug\masters_particle.obj.enc
+c:\w\his-master-s-voice\debug\masters_render.obj.enc
 c:\w\his-master-s-voice\debug\mastsers_update.obj.enc
 c:\w\his-master-s-voice\debug\masters voice.tlog\cl.command.1.tlog
 c:\w\his-master-s-voice\debug\masters voice.tlog\cl.read.1.tlog

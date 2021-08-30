@@ -10,19 +10,22 @@ extern const int grid_rows = 12;
 extern const int grid_columns = 16;
 
 
-// 32 = START
-// 7 = WALKABLE
-// 58 = DEADLY
 void load_level(const char* file, grid_square** grid, Bastard* bastard_arr, 
 				Long_Bastard* long_bastard_arr, Player* player, Smoke_Particle_System* smoke_system_arr,
-				SDL_Texture* walkable, SDL_Texture* deadly, SDL_Texture* smoke_texture,
+				SDL_Texture* walkable, SDL_Texture* walkable_two, SDL_Texture* walkable_three,
+				SDL_Texture* deadly, SDL_Texture* smoke_texture,
 				SDL_Texture* bastard_texture,  SDL_Texture* lava_two_texture, SDL_Texture* lava_three_texture, 
 				SDL_Texture* long_bastard_texture, SDL_Texture* door_texture,
 				int* bastard_count, int* long_bastard_count, int* particle_sys_count)
 {
-	int input;
+	printf("current file: %s\n", file);
+	int input = 0;
 	std::ifstream level_file;
 	level_file.open(file);
+
+	// TODO: CLEAR EVERYTHING
+
+
 
 	int temp_b_count = 0;
 	int temp_lb_count = 0;
@@ -151,8 +154,25 @@ void load_level(const char* file, grid_square** grid, Bastard* bastard_arr,
 				(*grid)[square_count].deadly = false;
 				(*grid)[square_count].texture = door_texture;
 			}
-
-			
+			// WALKABLE TWO = 6
+			else if (input == 6)
+			{
+				(*grid)[square_count].walkable = true;
+				(*grid)[square_count].deadly = false;
+				(*grid)[square_count].texture = walkable_two;
+				(*grid)[square_count].alpha = 110;
+			}
+			// WALKABLE THREE = 7
+			else if (input == 7)
+			{
+				(*grid)[square_count].walkable = true;
+				(*grid)[square_count].deadly = false;
+				(*grid)[square_count].texture = walkable_three;
+				(*grid)[square_count].alpha = 110;
+			}
 		}
 	}
+	*particle_sys_count = temp_particle_sys_count;
+	*bastard_count = temp_b_count;
+	*long_bastard_count = temp_lb_count;
 }

@@ -1,16 +1,36 @@
-﻿  masters.cpp
-C:\W\His-Master-s-Voice\masters.cpp(348,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(349,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(415,38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(416,38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(517,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(518,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\W\His-Master-s-Voice\masters.cpp(100,15): warning C4101: 'texture': unreferenced local variable
-C:\W\His-Master-s-Voice\masters.cpp(43,12): warning C4101: 'Event': unreferenced local variable
+﻿  audio.c
+  masters.cpp
+C:\W\His-Master-s-Voice\masters.cpp(717,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(718,18): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(811,40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(812,40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(840,36): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(912,41): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(913,41): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(958,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(959,18): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters.cpp(1296,23): warning C4018: '<': signed/unsigned mismatch
+  masters_camera.cpp
+C:\W\His-Master-s-Voice\masters_camera.cpp(9,35): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters_camera.cpp(10,35): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  masters_entity.cpp
+C:\W\His-Master-s-Voice\masters_entity.cpp(11,35): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters_entity.cpp(12,40): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters_entity.cpp(19,32): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters_entity.cpp(20,32): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters_entity.cpp(25,32): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\W\His-Master-s-Voice\masters_entity.cpp(26,32): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  masters_grid.cpp
   masters_level_loader.cpp
+C:\W\His-Master-s-Voice\masters_level_loader.cpp(89,14): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\W\His-Master-s-Voice\masters_level_loader.cpp(89,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  masters_particle.cpp
+  masters_render.cpp
+  masters_startup.cpp
+  mastsers_update.cpp
   Generating code
-  4 of 197 functions ( 2.0%) were compiled, the rest were copied from previous compilation.
+  0 of 270 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Run Hajta.vcxproj -> C:\W\His-Master-s-Voice\Release\Masters Voice.exe

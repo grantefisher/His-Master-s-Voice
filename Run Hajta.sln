@@ -5,22 +5,51 @@ VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Masters Voice", "Run Hajta.vcxproj", "{082F9D5E-63A1-4C9C-9B58-A5F30DBD7769}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "HMV_install", "..\HMV_install\HMV_install.vdproj", "{F2E565FD-92AA-49CA-8B53-24C335C217B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Deployment|x64 = Deployment|x64
+		Deployment|x86 = Deployment|x86
+		Mac|x64 = Mac|x64
+		Mac|x86 = Mac|x86
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{082F9D5E-63A1-4C9C-9B58-A5F30DBD7769}.Debug|x64.ActiveCfg = Debug|x64
-		{082F9D5E-63A1-4C9C-9B58-A5F30DBD7769}.Debug|x64.Build.0 = Debug|x64
+		{082F9D5E-63A1-4C9C-9B58-A5F30DBD7769}.Debug|x64.ActiveCfg = Release|Win32
+		{082F9D5E-63A1-4C9C-9B58-A5F30DBD7769}.Debug|x64.Build.0 = Release|Win32
 		{082F9D5E-63A1-4C9C-9B58-A5F30DBD7769}.Debug|x86.ActiveCfg = Debug|Win32
 		{082F9D5E-63A1-4C9C-9B58-A5F30DBD7769}.Debug|x86.Build.0 = Debug|Win32
+		{082F9D5E-63A1-4C9C-9B58-A5F30DBD7769}.Deployment|x64.ActiveCfg = Deployment|x64
+		{082F9D5E-63A1-4C9C-9B58-A5F30DBD7769}.Deployment|x64.Build.0 = Deployment|x64
+		{082F9D5E-63A1-4C9C-9B58-A5F30DBD7769}.Deployment|x86.ActiveCfg = Deployment|Win32
+		{082F9D5E-63A1-4C9C-9B58-A5F30DBD7769}.Deployment|x86.Build.0 = Deployment|Win32
+		{082F9D5E-63A1-4C9C-9B58-A5F30DBD7769}.Mac|x64.ActiveCfg = Mac|x64
+		{082F9D5E-63A1-4C9C-9B58-A5F30DBD7769}.Mac|x64.Build.0 = Mac|x64
+		{082F9D5E-63A1-4C9C-9B58-A5F30DBD7769}.Mac|x86.ActiveCfg = Mac|Win32
+		{082F9D5E-63A1-4C9C-9B58-A5F30DBD7769}.Mac|x86.Build.0 = Mac|Win32
 		{082F9D5E-63A1-4C9C-9B58-A5F30DBD7769}.Release|x64.ActiveCfg = Release|x64
 		{082F9D5E-63A1-4C9C-9B58-A5F30DBD7769}.Release|x64.Build.0 = Release|x64
 		{082F9D5E-63A1-4C9C-9B58-A5F30DBD7769}.Release|x86.ActiveCfg = Release|Win32
 		{082F9D5E-63A1-4C9C-9B58-A5F30DBD7769}.Release|x86.Build.0 = Release|Win32
+		{F2E565FD-92AA-49CA-8B53-24C335C217B3}.Debug|x64.ActiveCfg = Debug
+		{F2E565FD-92AA-49CA-8B53-24C335C217B3}.Debug|x64.Build.0 = Debug
+		{F2E565FD-92AA-49CA-8B53-24C335C217B3}.Debug|x86.ActiveCfg = Debug
+		{F2E565FD-92AA-49CA-8B53-24C335C217B3}.Debug|x86.Build.0 = Debug
+		{F2E565FD-92AA-49CA-8B53-24C335C217B3}.Deployment|x64.ActiveCfg = Debug
+		{F2E565FD-92AA-49CA-8B53-24C335C217B3}.Deployment|x64.Build.0 = Debug
+		{F2E565FD-92AA-49CA-8B53-24C335C217B3}.Deployment|x86.ActiveCfg = Debug
+		{F2E565FD-92AA-49CA-8B53-24C335C217B3}.Deployment|x86.Build.0 = Debug
+		{F2E565FD-92AA-49CA-8B53-24C335C217B3}.Mac|x64.ActiveCfg = Mac
+		{F2E565FD-92AA-49CA-8B53-24C335C217B3}.Mac|x64.Build.0 = Mac
+		{F2E565FD-92AA-49CA-8B53-24C335C217B3}.Mac|x86.ActiveCfg = Mac
+		{F2E565FD-92AA-49CA-8B53-24C335C217B3}.Mac|x86.Build.0 = Mac
+		{F2E565FD-92AA-49CA-8B53-24C335C217B3}.Release|x64.ActiveCfg = Release
+		{F2E565FD-92AA-49CA-8B53-24C335C217B3}.Release|x86.ActiveCfg = Release
+		{F2E565FD-92AA-49CA-8B53-24C335C217B3}.Release|x86.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

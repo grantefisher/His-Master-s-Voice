@@ -4,4 +4,10 @@
     <LocalDebuggerWorkingDirectory>$(SolutionDir)$(Configuration)\</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LocalDebuggerWorkingDirectory>$(ProjectDir)Release\</LocalDebuggerWorkingDirectory>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <DeploymentDirectory>C:\W\His-Master-s-Voice\deploy\</DeploymentDirectory>
+    <RemoteDebuggerWorkingDirectory>$(ProjectDir)debug\resources\</RemoteDebuggerWorkingDirectory>
+  </PropertyGroup>
 </Project>

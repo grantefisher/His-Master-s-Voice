@@ -54,9 +54,17 @@ enum direction_input
 	down,
 	left,
 	right,
-	undo
+	undo,
+    enter
 };
 
+enum pause_menu_state
+{
+    resume,
+    settings,
+    save,
+    exit_pause
+};
 
 //void grid_to_position(auto& pointer);
 
@@ -73,13 +81,15 @@ struct Player
 	int frame_iterator = 0;
 	enum player_move_state move_state = player_move_state::standing;
 	enum player_anim_frame current_frame = player_anim_frame::stand;
-
+    
 	bool facing_right = true;
-
+    
 	vec_two prev_grid_position = { 0, 0 };
 	int undo_count = 3;
 	int lives = 3;
-
+    
+	vec_two start_grid_position = { 0, 0 };
+    
 	void grid_to_position(int size);
 };
 
@@ -100,7 +110,7 @@ struct Long_Bastard
 	vec_two grid_position = { 0, 0 };
 	SDL_Texture* texture;
 	SDL_Rect rect;
-
+    
 	bool stuck = false;
 	bool delete_flag = false;
 	void grid_to_position(int size);
